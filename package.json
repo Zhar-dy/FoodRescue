@@ -1,6 +1,6 @@
 {
-  "name": "main",
-  "description": "ShadcnDashboard Modern Next.js Admin Dashboard",
+  "name": "foodrescue-ai",
+  "description": "AI-powered food rescue platform for predicting surplus food and recommending rescue offers.",
   "version": "0.1.0",
   "private": true,
   "scripts": {
