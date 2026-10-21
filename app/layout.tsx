@@ -15,17 +15,17 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "ShadcnDashboard - Tailwind + Shadcn Nextjs",
-  description: "Modern admin dashboard built with Next.js, Tailwind, and Shadcn.",
+  title: "FoodRescue AI",
+  description: "AI-powered food rescue platform for predicting surplus food and recommending rescue offers.",
    openGraph: {
-    title: "ShadcnDashboard - Tailwind + Shadcn Nextjs",
-    description: "Modern admin dashboard built with Next.js, Tailwind, and Shadcn.",
+    title: "FoodRescue AI",
+    description: "AI-powered food rescue platform for predicting surplus food and recommending rescue offers.",
     images: [
       {
         url: "/OG-Image.png",
         width: 1200,
         height: 630,
-        alt: "ShadcnDashboard Preview",
+        alt: "FoodRescue AI Preview",
       },
     ],
   },
