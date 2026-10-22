@@ -21,14 +21,15 @@ export function generateRecommendation(
       ? 50
       : 30;
 
-  const discountedPrice =
-    product.originalPrice * (1 - discountPercent / 100);
+  const discountedPrice = Number(
+    (product.originalPrice * (1 - discountPercent / 100)).toFixed(2)
+  );
 
   // Demo estimate: assume 82% of the recommended quantity sells.
   const expectedSellThrough = 0.82;
 
-  const expectedRevenueRecovered = Math.round(
-    quantity * discountedPrice * expectedSellThrough
+  const expectedRevenueRecovered = Number(
+    (quantity * discountedPrice * expectedSellThrough).toFixed(2)
   );
 
   const reasoning = [

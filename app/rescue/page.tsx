@@ -137,12 +137,13 @@ export default function RescuePage() {
       setReservations((current) => [...current, reservation]);
       setOffers(getOffers());
     } catch (cause) {
+      // Refresh availability first so reload cannot clear the reservation error.
+      reload();
       setError(
         cause instanceof Error
           ? cause.message
           : "We couldn’t complete your reservation. Please try again."
       );
-      reload();
     } finally {
       setBusyOfferId(null);
     }
@@ -456,7 +457,7 @@ export default function RescuePage() {
         </section>
 
         <footer className="mt-12 flex flex-col justify-between gap-3 border-t border-[#e0e7dd] pt-6 text-xs text-[#778077] sm:flex-row sm:items-center">
-          <p>© {new Date().getFullYear()} FoodRescue · Saving good food, one pickup at a time.</p>
+          <p>© 2026 FoodRescue · Saving good food, one pickup at a time.</p>
           <div className="flex items-center gap-2">
             <Leaf className="size-4" aria-hidden="true" />
             <span>Demo resident experience · no payment required</span>

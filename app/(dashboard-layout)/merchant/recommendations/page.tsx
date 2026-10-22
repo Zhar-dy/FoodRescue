@@ -190,6 +190,14 @@ export default function RecommendationsPage() {
             ? "No surplus to publish"
             : "Publish rescue offer"}
       </button>
+
+      {published && (
+        <p>
+          <Link href="/rescue" className="underline">
+            View resident offers →
+          </Link>
+        </p>
+      )}
     </div>
   );
 }
