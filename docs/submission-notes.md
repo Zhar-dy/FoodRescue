@@ -3,7 +3,7 @@
 ## Problem and proposed solution
 
 Food merchants face uncertain demand near closing time. FoodRescue combines a
-surplus estimate, a simple discount recommendation, and a resident reservation /
+surplus estimate, a rule-based discount recommendation, and a resident reservation /
 merchant pickup workflow. A merchant can turn expected leftovers into an offer
 while keeping the decision to publish.
 
@@ -29,12 +29,14 @@ claimed yet.
 
 ## What the prototype demonstrates and what it does not
 
-- Forecasts use **180 days of synthetic sales history, 2,160 hourly observations,
-  and an hourly-average baseline**. Generated rows provide scenario coverage,
-  not evidence of real-world accuracy.
+- Forecasts run a trained decision tree from180 synthetic days/2160 hourly observations.
+  It is fitted on150 earlier days and tested on30 later days:MAE2.30 items,
+  versus2.85 for the training-only time-average baseline. This is synthetic-only
+  evaluation, not measured real merchant accuracy.
 - Recommendation rules and sell-through assumptions are explicit demo choices.
-  There is no trained ML model or measured accuracy/confidence claim.
-- A fixed **7:30 PM** demo clock, **8 PM** suggested publication, and **9 PM**
+  Discounts, timing and sell-through remain rules/assumptions, not trained optimization.
+  There is no measured real-world accuracy or confidence percentage.
+- A selectable half-hour demo clock (default **7:30 PM**), **8 PM** suggested publication, and **9 PM**
   pickup deadline keep recordings repeatable. Publication is manual; no scheduler runs.
 - Merchant and resident share **browser localStorage on the same origin/profile**.
   It is not a multi-user backend and does not synchronise separate devices.
@@ -46,8 +48,8 @@ claimed yet.
 ## AI assistance disclosure — team to review before submission
 
 “ChatGPT/Codex assisted with implementation, code review and fixes,
-documentation, and generation of synthetic demonstration data. The forecasting
-baseline and recommendation rules are described in the repository. Synthetic
+documentation, and generation of synthetic demonstration data. The trained forecasting model, synthetic-only evaluation,
+and recommendation rules are described in the repository. Synthetic
 records are not real merchant data, and no production ML accuracy or real-world
 impact is claimed. Our team is responsible for reviewing, understanding,
 testing, and presenting the submitted work.”

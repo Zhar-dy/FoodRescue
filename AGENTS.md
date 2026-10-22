@@ -3,8 +3,10 @@
 ## FoodRescue prototype overrides
 
 The live FoodRescue flow uses `lib/demo-store.ts` and browser localStorage.
-Do not introduce a database, authentication, API service or Python runtime for
-this one-browser prototype. Keep inventory, forecast, recommendation, offer,
+Python is used offline in ml/ for training and evaluation; the exported tree runs
+in TypeScript without a Python web service. Do not introduce a database,
+authentication or an external AI API for this one-browser prototype.
+Keep inventory, forecast, recommendation, offer,
 reservation, pickup and collected-only impact connected. Read README.md and
 docs/submission-notes.md before changing scope or describing AI capabilities.
 `pnpm lint` checks the FoodRescue code; `pnpm lint:all` also checks retained

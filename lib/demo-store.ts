@@ -1,9 +1,11 @@
 import { demoProduct } from "@/data/demo";
+import { getForecastContext, getForecastFeatures, validateForecast } from "@/lib/prediction/context";
 import type {
   Product,
   Offer,
   Reservation,
   Recommendation,
+  ForecastContext,
 } from "@/types/foodrescue";
 
 const STORAGE_KEY = "foodrescue-demo-v1";
@@ -16,7 +18,7 @@ interface DemoState {
 
 function createInitialState(): DemoState {
   return {
-    products: [{ ...demoProduct }],
+    products: [{ ...demoProduct, forecast: getForecastContext(demoProduct) }],
     offers: [],
     reservations: [],
   };
@@ -43,6 +45,10 @@ function readState(): DemoState {
       const state = JSON.parse(saved) as DemoState;
       if (!state || !Array.isArray(state.products) || !Array.isArray(state.offers) || !Array.isArray(state.reservations)) {
         throw new Error("Invalid demo data.");
+      }
+      for (const product of state.products) {
+        if (!Number.isSafeInteger(product.currentStock) || product.currentStock < 0) throw new Error("Invalid saved stock.");
+        getForecastContext(product);
       }
       return state;
     } catch {
@@ -73,9 +79,16 @@ export function getReservations(): Reservation[] {
 // Edit stock before an offer is published.
 
 export function updateStock(productId: string, stock: number): void {
+  updateInventory(productId, stock);
+}
+
+// Validate and save every forecasting input together, without partial writes.
+export function updateInventory(productId: string, stock: number, forecast?: ForecastContext): void {
   if (!Number.isSafeInteger(stock) || stock < 0) {
     throw new Error("Stock must be a nonnegative whole number.");
   }
+
+  if (forecast) validateForecast(forecast);
 
   const state = readState();
 
@@ -96,6 +109,7 @@ export function updateStock(productId: string, stock: number): void {
   }
 
   product.currentStock = stock;
+  if (forecast) product.forecast = { ...forecast };
   writeState(state);
 }
 
@@ -128,6 +142,9 @@ export function createOffer(
   }
 
   const quantity = recommendation.quantity;
+  if (getForecastFeatures(getForecastContext(savedProduct))[0] === 0) {
+    throw new Error("The bakery is closed at the selected demo time.");
+  }
   const discount = recommendation.discountPercent;
 
   if (

@@ -1,32 +1,5 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-import { stripTypeScriptTypes } from "node:module";
-
-const root = fileURLToPath(new URL("../", import.meta.url));
-const cache = new Map();
-function load(relativePath) {
-  const filename = path.join(root, relativePath);
-  if (filename.endsWith(".json")) return JSON.parse(readFileSync(filename, "utf8"));
-  if (cache.has(filename)) return cache.get(filename).exports;
-  // Execute the actual function bodies. Only erase types and resolve project imports.
-  const source = stripTypeScriptTypes(readFileSync(filename, "utf8"));
-  const exports = [...source.matchAll(/\bexport\s+(?:function|const)\s+(\w+)/g)].map((match) => match[1]);
-  const outputText = source
-    .replace(/import\s+(\w+)\s+from\s+["']([^"']+)["'];?/g, (_, name, specifier) => `const ${name} = require(${JSON.stringify(specifier)});`)
-    .replace(/\bexport\s+(function|const)\s/g, "$1 ")
-    + `\nmodule.exports = { ${exports.join(", ")} };`;
-  const compiledModule = { exports: {} };
-  cache.set(filename, compiledModule);
-  const requireProject = (specifier) => {
-    assert.ok(specifier.startsWith("@/"), `Unexpected dependency: ${specifier}`);
-    const relative = specifier.slice(2);
-    return load(path.extname(relative) ? relative : `${relative}.ts`);
-  };
-  new Function("require", "module", "exports", outputText)(requireProject, compiledModule, compiledModule.exports);
-  return compiledModule.exports;
-}
+import { load } from "./test-loader.mjs";
 
 const { predictSurplus } = load("lib/prediction/index.ts");
 const { generateRecommendation } = load("lib/ai/recommendation.ts");
@@ -35,9 +8,9 @@ const data = load("data/synthetic-sales.json");
 
 const prediction = predictSurplus(demoProduct);
 assert.equal(prediction.productId, demoProduct.id);
-assert.equal(prediction.expectedRemainingSales, 7);
-assert.equal(prediction.predictedUnsold, 11);
-assert.equal(generateRecommendation(demoProduct, prediction).quantity, 11);
+assert.equal(prediction.expectedRemainingSales, 8);
+assert.equal(prediction.predictedUnsold, 10);
+assert.equal(generateRecommendation(demoProduct, prediction).quantity, 10);
 assert.equal(prediction.isSynthetic, true);
 assert.equal(prediction.confidence, 0); // No invented accuracy claim.
 

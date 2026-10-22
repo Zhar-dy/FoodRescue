@@ -16,7 +16,8 @@ export default function RecommendationsPage() {
   const [actionError, setActionError] = useState("");
   const error = actionError || loadError;
   const product = products[0] ?? null;
-  const recommendation = product ? generateRecommendation(product, predictSurplus(product)) : null;
+  const prediction = product ? predictSurplus(product) : null;
+  const recommendation = product && prediction ? generateRecommendation(product, prediction) : null;
   const published = !!product && offers.some((offer) => offer.productId === product.id);
 
   function handlePublish() {
@@ -132,8 +133,8 @@ export default function RecommendationsPage() {
         </ul>
 
         <p className="text-sm text-muted-foreground">
-          The surplus prediction uses an hourly-average baseline, not a trained
-          machine-learning model.
+          Forecast method: {prediction?.method === "trained-tree" ? "trained decision tree" : prediction?.method === "closed" ? "closed at selected demo time" : "average-based fallback"}.
+          The model is trained on synthetic data. Discounts, timing and sell-through are explicit rules and assumptions.
         </p>
       </section>
 

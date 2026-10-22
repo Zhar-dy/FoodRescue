@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "eslint \"app/(dashboard-layout)/layout.tsx\" \"app/(dashboard-layout)/page.tsx\" \"app/(dashboard-layout)/merchant/**/*.tsx\" app/rescue app/layout.tsx components/foodrescue lib hooks/use-demo-state.ts app/api/code scripts",
     "lint:all": "eslint .",
-    "test": "node scripts/test-demo.mjs"
+    "test": "node scripts/test-prediction.mjs && node scripts/test-ml.mjs && node scripts/test-demo.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.4.0",

@@ -1,56 +1,53 @@
 # FoodRescue AI
 
-A township food-rescue web prototype: inventory → baseline forecast → rescue
-recommendation → published offer → resident reservation → merchant pickup → impact.
+An ML-powered township food-rescue prototype: inventory → trained surplus
+forecast → rule-based recommendation → offer → reservation → pickup → impact.
 
-## Run
+## Run the web app
 
-Node.js 22 or newer. No database, login, API key or Python service is required.
-Use `pnpm install --frozen-lockfile`, `pnpm dev`, `pnpm build`, and `pnpm start`.
-The pinned pnpm version is in package.json. npm equivalents are supported by
-package-lock.json: `npm ci`, `npm run dev`, `npm run build`, `npm start`.
+Node.js22+, then `npm ci`, `npm run dev`. Open http://localhost:3000.
+For a production demo use `npm run build` and `npm start`. pnpm is also supported.
+The exported trained model is included: no Python server, API key or paid AI
+service is needed for deployment. Use the same browser profile and website
+address for Merchant and Resident; localStorage does not synchronize devices.
 
-Open http://localhost:3000. For recording, prefer a production build and `npm start`.
-Merchant and Resident must use the same browser profile and origin: localStorage
-is not a shared backend and will not synchronize between devices or deployments.
+## See the ML working
 
-## Verify
+Reset demo on Merchant: stock18, sales-so-far72, date2026-10-22, time19:30.
+Save inventory, then Predictions shows8 expected regular sales and10 leftovers.
+Change sales to100: expected sales becomes7 and leftovers11. Change time to20:30:
+the model estimates2 more regular sales. Outputs come from the learned tree.
+At21:00 new offers are disabled. Sales outside the training range use a labelled
+average-based fallback.
 
-- `node scripts/generate-synthetic-sales.mjs --check`
-- `node scripts/test-prediction.mjs`
-- `node scripts/test-demo.mjs`
-- `pnpm lint`
-- `pnpm build`
-- Optional Python reference: `python -m unittest discover -s examples -p "test_prediction.py"`
+Default rescue flow: stock18 →10 predicted leftovers → offer10 atRM6 → reserve2
+leaves8 available → collect gives stock16, rescued2, recovered offer valueRM12.
 
-`lint` checks the FoodRescue application and its shared code. `lint:all` also
-checks retained, unused dashboard-template examples, which have existing lint
-errors. The production build still type-checks the entire project.
+## Validate and learn
 
-## Demonstration
+- `npm test`: prediction, Python/TypeScript parity and full storage/impact workflow.
+- `node scripts/generate-synthetic-sales.mjs --check`: reproducible180-day fixture.
+- `npm run lint`: FoodRescue code. `npm run lint:all` includes unused template
+  examples with existing errors. Build type-checks the whole project.
+- [Step-by-step ML guide](docs/ml-guide.md)
+- [Model and evaluation](docs/prediction.md)
+- [Recording checklist](docs/demo-checklist.md)
+- [Five-minute pitch](docs/pitch-script.md)
+- [Submission notes](docs/submission-notes.md)
 
-Reset on Merchant. Stock18 → forecast11 → 50% off → RM6 offer → reserve2.
-Before pickup: rescued0, awaiting2. Confirm pickup: stock16, rescued2,
-revenueRM12. Refresh to verify persistence.
+## Evidence and limits
 
-All five pages are linked: Merchant, Predictions, Recommendations, Resident, Impact.
-See [demo checklist](docs/demo-checklist.md), [pitch script](docs/pitch-script.md),
-[submission notes](docs/submission-notes.md), and [data assumptions](docs/prediction.md).
+The decision tree is fitted on150 earlier synthetic days and tested on30 later
+days. Mean absolute error:2.30 items versus2.85 for a time-average baseline on
+that synthetic holdout. These are not real merchant accuracy results.
+Hyperparameters are selected on a separate earlier validation period.
 
-## Scope and evidence
+The180 simulated days contain2160 hourly records for one bakery product.
+Half-hour snapshots require a documented synthetic allocation assumption.
+Discount, timing and82% sell-through rules are assumptions, not learned
+optimization. No automatic retraining, payments, real geolocation, food-safety
+verification, notifications, separate resident accounts or multi-device backend.
+Distance600m is illustrative; revenue totals are collected offer value.
 
-180 dated synthetic days / 2,160 hourly observations for one bakery product,
-not real merchant records. Fixed demonstration clock19:30, closing21:00.
-Forecasting is an hourly-average baseline; discounts and82% sell-through are
-assumptions. No trained-model accuracy or real-world waste/CO2 savings are claimed.
-Distance600m is illustrative. No payments, real notifications, real geolocation,
-separate resident identities, food-safety verification or multi-device concurrency.
-
-AI tools assisted development and documentation; disclose this in the submission.
-Review the suggested disclosure in submission-notes.md and add other tools used by
-your team. Python in examples/ is educational and not used by the live website.
-
-## Credits
-
-Built with Next.js, React, TypeScript, Tailwind, shadcn-style components and
-[Shadcn Dashboard](https://shadcndashboard.dev/). Preserve the repository LICENSE.
+Disclose material AI assistance. Preserve the LICENSE and the
+[Shadcn Dashboard](https://shadcndashboard.dev/) template credit.

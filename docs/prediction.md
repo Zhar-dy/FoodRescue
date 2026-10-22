@@ -1,65 +1,68 @@
-# Forecasting and synthetic history
+# Trained forecasting model
 
-`predictSurplus(product)` from `@/lib/prediction` accepts the existing `Product`
-from `@/types/foodrescue`. It returns a compatible `Prediction` with extra UI
-fields. P2 can pass its result directly to `generateRecommendation(product, result)`.
-Use `currentStock`, `productId`, and `predictedUnsold`; there is no separate
-prediction-specific Product type.
+## What learns and what remains rules
 
-This is an hourly-average baseline, not trained ML. The scenario is fixed at
-7:30 PM, closing at 9 PM. It uses half of the 19:00 hourly average plus the full
-20:00 average, then rounds demand and caps it by stock. The documented sample
-produces approximately seven regular sales and eleven leftovers from stock 18.
-The required `confidence` field is zero because confidence has not been measured;
-do not present it as an accuracy statistic.
+`ml/train_model.py` fits scikit-learn's DecisionTreeRegressor on synthetic sales
+snapshots. Its target is remaining regular-price sales before21:00. Inputs are
+minutes until closing, weekday (Sunday0), and sales already observed that day.
+The unobserved future sales are the training label, never an inference input.
+Physical stock clips the rounded forecast; leftovers = stock - expected sales.
 
-## Synthetic assumptions
+`lib/prediction/tree.ts` evaluates learned thresholds from
+`data/models/surplus-tree.json`. It is not a hand-written discount rule tree.
+`lib/prediction/index.ts` connects it to the existing Product/Prediction contract.
+`lib/ai/recommendation.ts` still uses explicit30%/50% discount rules and assumed
+82% sell-through. Publication remains manual. There is no automatic retraining.
 
-Run `node scripts/generate-synthetic-sales.mjs` to reproduce the **180-day fixture
-with 2,160 hourly observations** using seed 42. The simulated dates run from
-1 April to 27 September 2026. This represents one hypothetical bakery and its
-Chocolate Bun product, not six months of collected transactions.
+## Data and split
 
-- The bakery opens at 09:00 and closes at 21:00, giving twelve hourly records per day.
-- Opening stock varies from 105 to 135 units around an assumed 120-unit level.
-- The assumed hourly demand profile is `[3, 5, 7, 10, 8, 6, 7, 8, 9, 6, 6, 4]`.
-- Weekday factors range from 0.90 on Monday to 1.18 on Saturday. Each day also
-  receives a seeded demand multiplier from 0.85 to 1.15 and each hour a seeded
-  variation from -2 to +2 units before rounding.
-- Every sale is capped by available stock. The JSON records each hour's starting
-  and remaining stock, plus the day's opening and closing stock. No replenishment,
-  discounted rescue demand, reservation outcomes, weather or holidays are simulated.
+Source:180 generated days,2026-04-01 through2026-09-27,2160 hourly observations
+for Chocolate Bun at one hypothetical bakery. Seed42. Opening stock105–135;
+documented weekday, daily and hourly variation; every sale is stock-capped.
 
-The forecast averages the 19:00 and 20:00 sales across all days; it does not fit a
-model or use weekday-specific forecasts. Its current 19:30 estimate still rounds
-to seven regular sales, leaving eleven from stock eighteen. The fixture has more
-variety for demonstrating and inspecting the baseline, but generated observations
-are not independent evidence that it is accurate. Sales during a stockout also
-cannot measure unmet demand. No holdout accuracy or confidence has been measured.
+Training requires half-hour snapshots: Python seed42 allocates each hourly sale
+independently to the first or second half with probability0.5. This is an extra
+simulation assumption, not additional observed transaction data. Eight snapshots
+per day cover17:00–20:30:1440 snapshots from180 days, not1440 independent days.
 
-## Shared inventory connection
+First120 days fit candidates; next30 days select depth/minimum leaf size.
+The selected model is refitted on the first150 days (1200 snapshots).
+The last30 days (240 snapshots) are held out by date and never used for tuning.
+Training dates:2026-04-01–2026-08-28; test dates:2026-08-29–2026-09-27.
 
-`/merchant/predictions` reads the saved product from `getProducts()` and passes
-it into `PredictionPanel` from `@/components/foodrescue/prediction-panel`:
+## Measured synthetic holdout results
 
-```tsx
-<PredictionPanel product={savedProduct} />
-```
+- Decision-tree MAE:2.3046367452 items.
+- Time-average baseline MAE:2.8490555556 items.
+- Metric: absolute error in remaining regular sales, before rounding/stock clipping.
+- Baseline averages use training days only, at the matching snapshot time.
+- Parameters selected on validation: maximum depth6, minimum leaf12.
 
-The panel reads `savedProduct.currentStock` directly. Edit inventory on Merchant,
-then open Predictions to see the new estimate. P2's recommendation function uses
-that same product and forecast. Browser localStorage is demonstration storage;
-it does not synchronize merchant and resident activity across different devices.
+These results apply to generated examples only. They are not accuracy
+percentages, confidence intervals or evidence of real waste reduction.
+The same assumptions generate training and testing data, so a real pilot remains
+necessary. Stock-capped sales do not measure unmet customer demand.
 
-## Checks
+## Runtime and safety
 
-The focused Node check uses Node 22.18 or newer for built-in TypeScript stripping.
+The model is exported to JSON, not a Python API. No extra Vercel environment
+variables are needed. Python is used offline for reproducible training only.
+Supported demo times17:00–21:00 on half-hour boundaries; closing21:00 disables
+new offers. Sales outside the observed training range40–107 trigger an explicitly
+labelled training-average fallback. Missing forecasting fields in older saved
+products receive documented defaults; existing offers/reservations are preserved.
 
-- `node scripts/generate-synthetic-sales.mjs --check`
-- `node scripts/test-prediction.mjs`
-- `pnpm build`
-- `pnpm lint`
+Default:date2026-10-22, time19:30, sales72, stock18. The learned raw estimate
+is7.5833, rounded to8 regular sales and10 leftovers. Do not force the older11
+leftovers example into the trained output. Sales100 yields7 sales/11 leftovers.
+At20:30 with sales72 the model rounds to2 sales.
 
-The focused check verifies the shared contracts, stock bounds, invalid input,
-dated history, varying assumptions and conservation of all 2,160 stock records.
-The generator's `--check` compares the entire file against its seeded output.
+## Reproduce
+
+Install `ml/requirements.txt` in a Python virtual environment. Run:
+`python ml/train_model.py`, then `python ml/train_model.py --check`.
+The latter verifies exact artifact/parity output with the pinned environment.
+The source hash uses canonical JSON, independent of Windows line endings.
+`npm test` checks all240 exported Python/TypeScript predictions within1e-12,
+input bounds, legacy defaults, fallback, closed time and the full rescue flow.
+See [the walkthrough](ml-guide.md) for commands and learning checkpoints.

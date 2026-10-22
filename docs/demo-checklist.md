@@ -7,22 +7,24 @@ resident are demo roles sharing this browser's saved data, not separate accounts
 
 1. Open **Merchant** and click **Reset demo**. Chocolate Bun stock is **18**,
    original price **RM12**, with no offers or reservations.
-2. Save stock **10**, then open **Predictions**: expect **3** likely unsold.
-   Recommendations should suggest **3** items at **30% off**. This proves the
+2. Save inventory with stock **10**, then open **Predictions**: expect **2** likely unsold.
+   Recommendations should suggest **2** items at **30% off**. This proves the
    output responds to inventory. Return to Merchant and reset again.
-3. Open **Predictions**: stock **18**, expected normal sales **7**, likely unsold
-   **11**. The demo clock is fixed at **7:30 PM**, closing **9 PM**.
-4. Open **Recommendations**: **11** items, **50% off**, **RM6** each, suggested
+3. Open **Predictions**: stock **18**, expected normal sales **8**, likely unsold
+   **10**. Default inputs: sales so far **72**, date **2026-10-22**, demo time **19:30**, closing **21:00**.
+4. Open **Recommendations**: **10** items, **50% off**, **RM6** each, suggested
    launch **8 PM**. Estimated revenue is a forecast, not money already recovered.
 5. Click **Publish rescue offer**. Repeating publication must not create a
    duplicate. Physical stock remains **18**.
-6. Open **Resident**, reserve **2** buns. Availability becomes **9**; the
+6. Open **Resident**, reserve **2** buns. Availability becomes **8**; the
    reservation appears. Refresh to confirm it persists.
 7. Open **Merchant**: the reservation appears and physical stock is still **18**.
    Confirm pickup once: status becomes **collected**, stock becomes **16**,
-   offer availability remains **9**. A second confirmation must not change stock.
+   offer availability remains **8**. A second confirmation must not change stock.
 8. Open **Impact**: **2 items rescued**, **RM12.00 recovered**, **0 awaiting
    pickup**. Refresh and verify the same totals.
+
+Additional ML check: before publishing, change sales so far to **100**, save, and confirm **11** leftovers. Reset again. At **21:00**, publishing must be disabled.
 
 ## Before sending
 
