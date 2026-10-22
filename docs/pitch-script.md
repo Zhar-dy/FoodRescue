@@ -18,7 +18,7 @@ residents. The township operator could help coordinate participating businesses.
 
 **0:35–1:10 · Solution and scope — show Merchant with 18 buns**
 
-“Our prototype connects a surplus forecast with a rescue offer, reservation, and
+“Our prototype connects a trained surplus forecast with a rescue offer, reservation, and
 confirmed pickup. The merchant first sees an estimate of likely leftovers and an
 explanation of the suggested offer. This is a working browser demonstration.
 Merchant and resident are demo roles sharing saved data in one browser. It does
@@ -26,35 +26,36 @@ not yet provide separate accounts, online payments, or a shared production backe
 
 **1:10–2:00 · Data and forecast — show Predictions; demonstrate changed stock**
 
-“Here the bakery has 18 chocolate buns at 7:30 PM and closes at 9. Our baseline
-estimates seven more normal sales and 11 likely leftovers. The history covers
+“Here the bakery has 18 chocolate buns at 7:30 PM and closes at 9. Our trained decision tree
+estimates eight more normal sales and 10 likely leftovers, with 72 sales so far. The history covers
 180 synthetic days with 2,160 hourly observations. We generated it from explicit
 assumptions so the prototype is repeatable. These are not real merchant records,
-and the number of rows does not prove accuracy. The current forecast uses hourly
-sales averages rather than a trained machine-learning model.”
+and the number of rows does not prove accuracy. We fitted the model on 150 earlier synthetic days and tested it on 30 later days.
+Its mean absolute error was 2.30 items compared with 2.85 for a time-average
+baseline. These are synthetic test results, not real merchant accuracy.”
 
-Screen actions: change stock to **10**, save, and show **3** predicted leftovers.
+Screen actions: change stock to **10**, save, and show **2** predicted leftovers.
 Show the **30%** recommendation, then return to Merchant and **Reset demo**.
 
 “Changing inventory changes the result. A future pilot would collect real sales,
-measure forecast errors, and compare more advanced models against this baseline.”
+measure forecast errors, and compare this model and the baseline on real merchant outcomes.”
 
 **2:00–2:45 · Recommendation — show Recommendations and publish**
 
-“With the original 18 buns restored, the suggestion is to offer 11 at 50 percent
+“With the original 18 buns restored, the suggestion is to offer 10 at 50 percent
 off: RM12 becomes RM6. The proposed launch is 8 PM, with pickup before 9 PM.
 The discount follows an explicit rule based on the surplus share. Sell-through
 and estimated revenue are assumptions, not guaranteed sales. The merchant keeps
-control and publishes the offer. The prototype uses a fixed demo clock so the
+control and publishes the offer. The selected demo clock stays fixed during each scenario so the
 recording remains repeatable.”
 
 Screen actions: click **Publish rescue offer**, then open **Resident**. Physical
-stock should still be **18**, with **11** offer units available.
+stock should still be **18**, with **10** offer units available.
 
 **2:45–3:35 · Resident reservation and pickup — perform the complete flow**
 
 “The resident can see the published offer and reserve two buns. Availability
-falls from 11 to nine, but physical stock stays at 18 while the food is waiting
+falls from 10 to eight, but physical stock stays at 18 while the food is waiting
 for pickup. The merchant sees the same reservation and confirms collection.
 Physical stock then falls to 16. A reservation alone does not count as rescued
 food. Collection is the event that updates the outcome.”

@@ -1,0 +1,2642 @@
+[
+  {
+    "date": "2026-08-29",
+    "minute": 1020,
+    "features": [
+      240,
+      6,
+      65
+    ],
+    "target": 29,
+    "pythonPrediction": 27.166666666666668
+  },
+  {
+    "date": "2026-08-29",
+    "minute": 1050,
+    "features": [
+      210,
+      6,
+      69
+    ],
+    "target": 25,
+    "pythonPrediction": 23.9
+  },
+  {
+    "date": "2026-08-29",
+    "minute": 1080,
+    "features": [
+      180,
+      6,
+      76
+    ],
+    "target": 18,
+    "pythonPrediction": 18.7
+  },
+  {
+    "date": "2026-08-29",
+    "minute": 1110,
+    "features": [
+      150,
+      6,
+      82
+    ],
+    "target": 12,
+    "pythonPrediction": 15.777777777777779
+  },
+  {
+    "date": "2026-08-29",
+    "minute": 1140,
+    "features": [
+      120,
+      6,
+      84
+    ],
+    "target": 10,
+    "pythonPrediction": 11.5
+  },
+  {
+    "date": "2026-08-29",
+    "minute": 1170,
+    "features": [
+      90,
+      6,
+      87
+    ],
+    "target": 7,
+    "pythonPrediction": 8.256410256410257
+  },
+  {
+    "date": "2026-08-29",
+    "minute": 1200,
+    "features": [
+      60,
+      6,
+      91
+    ],
+    "target": 3,
+    "pythonPrediction": 4.648648648648648
+  },
+  {
+    "date": "2026-08-29",
+    "minute": 1230,
+    "features": [
+      30,
+      6,
+      92
+    ],
+    "target": 2,
+    "pythonPrediction": 1.8333333333333333
+  },
+  {
+    "date": "2026-08-30",
+    "minute": 1020,
+    "features": [
+      240,
+      0,
+      50
+    ],
+    "target": 27,
+    "pythonPrediction": 23.142857142857142
+  },
+  {
+    "date": "2026-08-30",
+    "minute": 1050,
+    "features": [
+      210,
+      0,
+      54
+    ],
+    "target": 23,
+    "pythonPrediction": 19.0
+  },
+  {
+    "date": "2026-08-30",
+    "minute": 1080,
+    "features": [
+      180,
+      0,
+      60
+    ],
+    "target": 17,
+    "pythonPrediction": 14.933333333333334
+  },
+  {
+    "date": "2026-08-30",
+    "minute": 1110,
+    "features": [
+      150,
+      0,
+      64
+    ],
+    "target": 13,
+    "pythonPrediction": 12.095238095238095
+  },
+  {
+    "date": "2026-08-30",
+    "minute": 1140,
+    "features": [
+      120,
+      0,
+      66
+    ],
+    "target": 11,
+    "pythonPrediction": 8.846153846153847
+  },
+  {
+    "date": "2026-08-30",
+    "minute": 1170,
+    "features": [
+      90,
+      0,
+      68
+    ],
+    "target": 9,
+    "pythonPrediction": 5.666666666666667
+  },
+  {
+    "date": "2026-08-30",
+    "minute": 1200,
+    "features": [
+      60,
+      0,
+      72
+    ],
+    "target": 5,
+    "pythonPrediction": 3.380952380952381
+  },
+  {
+    "date": "2026-08-30",
+    "minute": 1230,
+    "features": [
+      30,
+      0,
+      75
+    ],
+    "target": 2,
+    "pythonPrediction": 1.5714285714285714
+  },
+  {
+    "date": "2026-08-31",
+    "minute": 1020,
+    "features": [
+      240,
+      1,
+      44
+    ],
+    "target": 13,
+    "pythonPrediction": 21.05263157894737
+  },
+  {
+    "date": "2026-08-31",
+    "minute": 1050,
+    "features": [
+      210,
+      1,
+      47
+    ],
+    "target": 10,
+    "pythonPrediction": 17.235294117647058
+  },
+  {
+    "date": "2026-08-31",
+    "minute": 1080,
+    "features": [
+      180,
+      1,
+      50
+    ],
+    "target": 7,
+    "pythonPrediction": 13.38888888888889
+  },
+  {
+    "date": "2026-08-31",
+    "minute": 1110,
+    "features": [
+      150,
+      1,
+      53
+    ],
+    "target": 4,
+    "pythonPrediction": 11.0
+  },
+  {
+    "date": "2026-08-31",
+    "minute": 1140,
+    "features": [
+      120,
+      1,
+      53
+    ],
+    "target": 4,
+    "pythonPrediction": 8.6
+  },
+  {
+    "date": "2026-08-31",
+    "minute": 1170,
+    "features": [
+      90,
+      1,
+      54
+    ],
+    "target": 3,
+    "pythonPrediction": 5.666666666666667
+  },
+  {
+    "date": "2026-08-31",
+    "minute": 1200,
+    "features": [
+      60,
+      1,
+      56
+    ],
+    "target": 1,
+    "pythonPrediction": 3.380952380952381
+  },
+  {
+    "date": "2026-08-31",
+    "minute": 1230,
+    "features": [
+      30,
+      1,
+      57
+    ],
+    "target": 0,
+    "pythonPrediction": 1.5714285714285714
+  },
+  {
+    "date": "2026-09-01",
+    "minute": 1020,
+    "features": [
+      240,
+      2,
+      42
+    ],
+    "target": 13,
+    "pythonPrediction": 21.05263157894737
+  },
+  {
+    "date": "2026-09-01",
+    "minute": 1050,
+    "features": [
+      210,
+      2,
+      47
+    ],
+    "target": 8,
+    "pythonPrediction": 17.235294117647058
+  },
+  {
+    "date": "2026-09-01",
+    "minute": 1080,
+    "features": [
+      180,
+      2,
+      47
+    ],
+    "target": 8,
+    "pythonPrediction": 13.38888888888889
+  },
+  {
+    "date": "2026-09-01",
+    "minute": 1110,
+    "features": [
+      150,
+      2,
+      47
+    ],
+    "target": 8,
+    "pythonPrediction": 11.0
+  },
+  {
+    "date": "2026-09-01",
+    "minute": 1140,
+    "features": [
+      120,
+      2,
+      51
+    ],
+    "target": 4,
+    "pythonPrediction": 8.6
+  },
+  {
+    "date": "2026-09-01",
+    "minute": 1170,
+    "features": [
+      90,
+      2,
+      52
+    ],
+    "target": 3,
+    "pythonPrediction": 6.578947368421052
+  },
+  {
+    "date": "2026-09-01",
+    "minute": 1200,
+    "features": [
+      60,
+      2,
+      54
+    ],
+    "target": 1,
+    "pythonPrediction": 3.5
+  },
+  {
+    "date": "2026-09-01",
+    "minute": 1230,
+    "features": [
+      30,
+      2,
+      54
+    ],
+    "target": 1,
+    "pythonPrediction": 2.0454545454545454
+  },
+  {
+    "date": "2026-09-02",
+    "minute": 1020,
+    "features": [
+      240,
+      3,
+      56
+    ],
+    "target": 26,
+    "pythonPrediction": 27.166666666666668
+  },
+  {
+    "date": "2026-09-02",
+    "minute": 1050,
+    "features": [
+      210,
+      3,
+      62
+    ],
+    "target": 20,
+    "pythonPrediction": 20.916666666666668
+  },
+  {
+    "date": "2026-09-02",
+    "minute": 1080,
+    "features": [
+      180,
+      3,
+      68
+    ],
+    "target": 14,
+    "pythonPrediction": 16.451612903225808
+  },
+  {
+    "date": "2026-09-02",
+    "minute": 1110,
+    "features": [
+      150,
+      3,
+      70
+    ],
+    "target": 12,
+    "pythonPrediction": 14.068965517241379
+  },
+  {
+    "date": "2026-09-02",
+    "minute": 1140,
+    "features": [
+      120,
+      3,
+      73
+    ],
+    "target": 9,
+    "pythonPrediction": 10.268292682926829
+  },
+  {
+    "date": "2026-09-02",
+    "minute": 1170,
+    "features": [
+      90,
+      3,
+      77
+    ],
+    "target": 5,
+    "pythonPrediction": 7.0
+  },
+  {
+    "date": "2026-09-02",
+    "minute": 1200,
+    "features": [
+      60,
+      3,
+      80
+    ],
+    "target": 2,
+    "pythonPrediction": 3.5
+  },
+  {
+    "date": "2026-09-02",
+    "minute": 1230,
+    "features": [
+      30,
+      3,
+      81
+    ],
+    "target": 1,
+    "pythonPrediction": 1.5833333333333333
+  },
+  {
+    "date": "2026-09-03",
+    "minute": 1020,
+    "features": [
+      240,
+      4,
+      60
+    ],
+    "target": 28,
+    "pythonPrediction": 27.166666666666668
+  },
+  {
+    "date": "2026-09-03",
+    "minute": 1050,
+    "features": [
+      210,
+      4,
+      65
+    ],
+    "target": 23,
+    "pythonPrediction": 20.916666666666668
+  },
+  {
+    "date": "2026-09-03",
+    "minute": 1080,
+    "features": [
+      180,
+      4,
+      71
+    ],
+    "target": 17,
+    "pythonPrediction": 16.451612903225808
+  },
+  {
+    "date": "2026-09-03",
+    "minute": 1110,
+    "features": [
+      150,
+      4,
+      72
+    ],
+    "target": 16,
+    "pythonPrediction": 14.068965517241379
+  },
+  {
+    "date": "2026-09-03",
+    "minute": 1140,
+    "features": [
+      120,
+      4,
+      75
+    ],
+    "target": 13,
+    "pythonPrediction": 10.268292682926829
+  },
+  {
+    "date": "2026-09-03",
+    "minute": 1170,
+    "features": [
+      90,
+      4,
+      80
+    ],
+    "target": 8,
+    "pythonPrediction": 7.0
+  },
+  {
+    "date": "2026-09-03",
+    "minute": 1200,
+    "features": [
+      60,
+      4,
+      83
+    ],
+    "target": 5,
+    "pythonPrediction": 3.5
+  },
+  {
+    "date": "2026-09-03",
+    "minute": 1230,
+    "features": [
+      30,
+      4,
+      85
+    ],
+    "target": 3,
+    "pythonPrediction": 2.2758620689655173
+  },
+  {
+    "date": "2026-09-04",
+    "minute": 1020,
+    "features": [
+      240,
+      5,
+      67
+    ],
+    "target": 30,
+    "pythonPrediction": 30.80952380952381
+  },
+  {
+    "date": "2026-09-04",
+    "minute": 1050,
+    "features": [
+      210,
+      5,
+      73
+    ],
+    "target": 24,
+    "pythonPrediction": 23.9
+  },
+  {
+    "date": "2026-09-04",
+    "minute": 1080,
+    "features": [
+      180,
+      5,
+      79
+    ],
+    "target": 18,
+    "pythonPrediction": 18.7
+  },
+  {
+    "date": "2026-09-04",
+    "minute": 1110,
+    "features": [
+      150,
+      5,
+      83
+    ],
+    "target": 14,
+    "pythonPrediction": 15.777777777777779
+  },
+  {
+    "date": "2026-09-04",
+    "minute": 1140,
+    "features": [
+      120,
+      5,
+      86
+    ],
+    "target": 11,
+    "pythonPrediction": 11.5
+  },
+  {
+    "date": "2026-09-04",
+    "minute": 1170,
+    "features": [
+      90,
+      5,
+      90
+    ],
+    "target": 7,
+    "pythonPrediction": 8.256410256410257
+  },
+  {
+    "date": "2026-09-04",
+    "minute": 1200,
+    "features": [
+      60,
+      5,
+      91
+    ],
+    "target": 6,
+    "pythonPrediction": 4.648648648648648
+  },
+  {
+    "date": "2026-09-04",
+    "minute": 1230,
+    "features": [
+      30,
+      5,
+      94
+    ],
+    "target": 3,
+    "pythonPrediction": 1.8333333333333333
+  },
+  {
+    "date": "2026-09-05",
+    "minute": 1020,
+    "features": [
+      240,
+      6,
+      70
+    ],
+    "target": 31,
+    "pythonPrediction": 30.80952380952381
+  },
+  {
+    "date": "2026-09-05",
+    "minute": 1050,
+    "features": [
+      210,
+      6,
+      75
+    ],
+    "target": 26,
+    "pythonPrediction": 23.9
+  },
+  {
+    "date": "2026-09-05",
+    "minute": 1080,
+    "features": [
+      180,
+      6,
+      79
+    ],
+    "target": 22,
+    "pythonPrediction": 18.7
+  },
+  {
+    "date": "2026-09-05",
+    "minute": 1110,
+    "features": [
+      150,
+      6,
+      81
+    ],
+    "target": 20,
+    "pythonPrediction": 14.068965517241379
+  },
+  {
+    "date": "2026-09-05",
+    "minute": 1140,
+    "features": [
+      120,
+      6,
+      85
+    ],
+    "target": 16,
+    "pythonPrediction": 11.5
+  },
+  {
+    "date": "2026-09-05",
+    "minute": 1170,
+    "features": [
+      90,
+      6,
+      90
+    ],
+    "target": 11,
+    "pythonPrediction": 8.256410256410257
+  },
+  {
+    "date": "2026-09-05",
+    "minute": 1200,
+    "features": [
+      60,
+      6,
+      94
+    ],
+    "target": 7,
+    "pythonPrediction": 4.648648648648648
+  },
+  {
+    "date": "2026-09-05",
+    "minute": 1230,
+    "features": [
+      30,
+      6,
+      98
+    ],
+    "target": 3,
+    "pythonPrediction": 2.0
+  },
+  {
+    "date": "2026-09-06",
+    "minute": 1020,
+    "features": [
+      240,
+      0,
+      61
+    ],
+    "target": 29,
+    "pythonPrediction": 30.153846153846153
+  },
+  {
+    "date": "2026-09-06",
+    "minute": 1050,
+    "features": [
+      210,
+      0,
+      66
+    ],
+    "target": 24,
+    "pythonPrediction": 24.8
+  },
+  {
+    "date": "2026-09-06",
+    "minute": 1080,
+    "features": [
+      180,
+      0,
+      71
+    ],
+    "target": 19,
+    "pythonPrediction": 19.57894736842105
+  },
+  {
+    "date": "2026-09-06",
+    "minute": 1110,
+    "features": [
+      150,
+      0,
+      75
+    ],
+    "target": 15,
+    "pythonPrediction": 15.714285714285714
+  },
+  {
+    "date": "2026-09-06",
+    "minute": 1140,
+    "features": [
+      120,
+      0,
+      77
+    ],
+    "target": 13,
+    "pythonPrediction": 12.45
+  },
+  {
+    "date": "2026-09-06",
+    "minute": 1170,
+    "features": [
+      90,
+      0,
+      79
+    ],
+    "target": 11,
+    "pythonPrediction": 8.894736842105264
+  },
+  {
+    "date": "2026-09-06",
+    "minute": 1200,
+    "features": [
+      60,
+      0,
+      83
+    ],
+    "target": 7,
+    "pythonPrediction": 4.833333333333333
+  },
+  {
+    "date": "2026-09-06",
+    "minute": 1230,
+    "features": [
+      30,
+      0,
+      88
+    ],
+    "target": 2,
+    "pythonPrediction": 2.2758620689655173
+  },
+  {
+    "date": "2026-09-07",
+    "minute": 1020,
+    "features": [
+      240,
+      1,
+      43
+    ],
+    "target": 17,
+    "pythonPrediction": 21.05263157894737
+  },
+  {
+    "date": "2026-09-07",
+    "minute": 1050,
+    "features": [
+      210,
+      1,
+      47
+    ],
+    "target": 13,
+    "pythonPrediction": 17.235294117647058
+  },
+  {
+    "date": "2026-09-07",
+    "minute": 1080,
+    "features": [
+      180,
+      1,
+      49
+    ],
+    "target": 11,
+    "pythonPrediction": 13.38888888888889
+  },
+  {
+    "date": "2026-09-07",
+    "minute": 1110,
+    "features": [
+      150,
+      1,
+      49
+    ],
+    "target": 11,
+    "pythonPrediction": 11.0
+  },
+  {
+    "date": "2026-09-07",
+    "minute": 1140,
+    "features": [
+      120,
+      1,
+      52
+    ],
+    "target": 8,
+    "pythonPrediction": 8.6
+  },
+  {
+    "date": "2026-09-07",
+    "minute": 1170,
+    "features": [
+      90,
+      1,
+      55
+    ],
+    "target": 5,
+    "pythonPrediction": 5.666666666666667
+  },
+  {
+    "date": "2026-09-07",
+    "minute": 1200,
+    "features": [
+      60,
+      1,
+      58
+    ],
+    "target": 2,
+    "pythonPrediction": 3.380952380952381
+  },
+  {
+    "date": "2026-09-07",
+    "minute": 1230,
+    "features": [
+      30,
+      1,
+      58
+    ],
+    "target": 2,
+    "pythonPrediction": 1.5714285714285714
+  },
+  {
+    "date": "2026-09-08",
+    "minute": 1020,
+    "features": [
+      240,
+      2,
+      52
+    ],
+    "target": 30,
+    "pythonPrediction": 23.142857142857142
+  },
+  {
+    "date": "2026-09-08",
+    "minute": 1050,
+    "features": [
+      210,
+      2,
+      54
+    ],
+    "target": 28,
+    "pythonPrediction": 19.0
+  },
+  {
+    "date": "2026-09-08",
+    "minute": 1080,
+    "features": [
+      180,
+      2,
+      61
+    ],
+    "target": 21,
+    "pythonPrediction": 14.933333333333334
+  },
+  {
+    "date": "2026-09-08",
+    "minute": 1110,
+    "features": [
+      150,
+      2,
+      64
+    ],
+    "target": 18,
+    "pythonPrediction": 12.095238095238095
+  },
+  {
+    "date": "2026-09-08",
+    "minute": 1140,
+    "features": [
+      120,
+      2,
+      69
+    ],
+    "target": 13,
+    "pythonPrediction": 10.268292682926829
+  },
+  {
+    "date": "2026-09-08",
+    "minute": 1170,
+    "features": [
+      90,
+      2,
+      73
+    ],
+    "target": 9,
+    "pythonPrediction": 7.583333333333333
+  },
+  {
+    "date": "2026-09-08",
+    "minute": 1200,
+    "features": [
+      60,
+      2,
+      77
+    ],
+    "target": 5,
+    "pythonPrediction": 4.069767441860465
+  },
+  {
+    "date": "2026-09-08",
+    "minute": 1230,
+    "features": [
+      30,
+      2,
+      79
+    ],
+    "target": 3,
+    "pythonPrediction": 1.5833333333333333
+  },
+  {
+    "date": "2026-09-09",
+    "minute": 1020,
+    "features": [
+      240,
+      3,
+      52
+    ],
+    "target": 23,
+    "pythonPrediction": 24.318181818181817
+  },
+  {
+    "date": "2026-09-09",
+    "minute": 1050,
+    "features": [
+      210,
+      3,
+      55
+    ],
+    "target": 20,
+    "pythonPrediction": 19.59090909090909
+  },
+  {
+    "date": "2026-09-09",
+    "minute": 1080,
+    "features": [
+      180,
+      3,
+      61
+    ],
+    "target": 14,
+    "pythonPrediction": 15.071428571428571
+  },
+  {
+    "date": "2026-09-09",
+    "minute": 1110,
+    "features": [
+      150,
+      3,
+      63
+    ],
+    "target": 12,
+    "pythonPrediction": 12.833333333333334
+  },
+  {
+    "date": "2026-09-09",
+    "minute": 1140,
+    "features": [
+      120,
+      3,
+      65
+    ],
+    "target": 10,
+    "pythonPrediction": 9.619047619047619
+  },
+  {
+    "date": "2026-09-09",
+    "minute": 1170,
+    "features": [
+      90,
+      3,
+      69
+    ],
+    "target": 6,
+    "pythonPrediction": 6.578947368421052
+  },
+  {
+    "date": "2026-09-09",
+    "minute": 1200,
+    "features": [
+      60,
+      3,
+      70
+    ],
+    "target": 5,
+    "pythonPrediction": 4.069767441860465
+  },
+  {
+    "date": "2026-09-09",
+    "minute": 1230,
+    "features": [
+      30,
+      3,
+      72
+    ],
+    "target": 3,
+    "pythonPrediction": 2.0454545454545454
+  },
+  {
+    "date": "2026-09-10",
+    "minute": 1020,
+    "features": [
+      240,
+      4,
+      52
+    ],
+    "target": 18,
+    "pythonPrediction": 24.318181818181817
+  },
+  {
+    "date": "2026-09-10",
+    "minute": 1050,
+    "features": [
+      210,
+      4,
+      56
+    ],
+    "target": 14,
+    "pythonPrediction": 19.59090909090909
+  },
+  {
+    "date": "2026-09-10",
+    "minute": 1080,
+    "features": [
+      180,
+      4,
+      60
+    ],
+    "target": 10,
+    "pythonPrediction": 15.923076923076923
+  },
+  {
+    "date": "2026-09-10",
+    "minute": 1110,
+    "features": [
+      150,
+      4,
+      63
+    ],
+    "target": 7,
+    "pythonPrediction": 12.833333333333334
+  },
+  {
+    "date": "2026-09-10",
+    "minute": 1140,
+    "features": [
+      120,
+      4,
+      65
+    ],
+    "target": 5,
+    "pythonPrediction": 9.619047619047619
+  },
+  {
+    "date": "2026-09-10",
+    "minute": 1170,
+    "features": [
+      90,
+      4,
+      68
+    ],
+    "target": 2,
+    "pythonPrediction": 6.578947368421052
+  },
+  {
+    "date": "2026-09-10",
+    "minute": 1200,
+    "features": [
+      60,
+      4,
+      69
+    ],
+    "target": 1,
+    "pythonPrediction": 4.069767441860465
+  },
+  {
+    "date": "2026-09-10",
+    "minute": 1230,
+    "features": [
+      30,
+      4,
+      69
+    ],
+    "target": 1,
+    "pythonPrediction": 2.0454545454545454
+  },
+  {
+    "date": "2026-09-11",
+    "minute": 1020,
+    "features": [
+      240,
+      5,
+      57
+    ],
+    "target": 32,
+    "pythonPrediction": 27.166666666666668
+  },
+  {
+    "date": "2026-09-11",
+    "minute": 1050,
+    "features": [
+      210,
+      5,
+      65
+    ],
+    "target": 24,
+    "pythonPrediction": 23.9
+  },
+  {
+    "date": "2026-09-11",
+    "minute": 1080,
+    "features": [
+      180,
+      5,
+      68
+    ],
+    "target": 21,
+    "pythonPrediction": 18.7
+  },
+  {
+    "date": "2026-09-11",
+    "minute": 1110,
+    "features": [
+      150,
+      5,
+      71
+    ],
+    "target": 18,
+    "pythonPrediction": 14.068965517241379
+  },
+  {
+    "date": "2026-09-11",
+    "minute": 1140,
+    "features": [
+      120,
+      5,
+      74
+    ],
+    "target": 15,
+    "pythonPrediction": 11.5
+  },
+  {
+    "date": "2026-09-11",
+    "minute": 1170,
+    "features": [
+      90,
+      5,
+      76
+    ],
+    "target": 13,
+    "pythonPrediction": 8.256410256410257
+  },
+  {
+    "date": "2026-09-11",
+    "minute": 1200,
+    "features": [
+      60,
+      5,
+      82
+    ],
+    "target": 7,
+    "pythonPrediction": 4.648648648648648
+  },
+  {
+    "date": "2026-09-11",
+    "minute": 1230,
+    "features": [
+      30,
+      5,
+      86
+    ],
+    "target": 3,
+    "pythonPrediction": 3.0
+  },
+  {
+    "date": "2026-09-12",
+    "minute": 1020,
+    "features": [
+      240,
+      6,
+      67
+    ],
+    "target": 32,
+    "pythonPrediction": 30.80952380952381
+  },
+  {
+    "date": "2026-09-12",
+    "minute": 1050,
+    "features": [
+      210,
+      6,
+      73
+    ],
+    "target": 26,
+    "pythonPrediction": 23.9
+  },
+  {
+    "date": "2026-09-12",
+    "minute": 1080,
+    "features": [
+      180,
+      6,
+      77
+    ],
+    "target": 22,
+    "pythonPrediction": 18.7
+  },
+  {
+    "date": "2026-09-12",
+    "minute": 1110,
+    "features": [
+      150,
+      6,
+      81
+    ],
+    "target": 18,
+    "pythonPrediction": 14.068965517241379
+  },
+  {
+    "date": "2026-09-12",
+    "minute": 1140,
+    "features": [
+      120,
+      6,
+      86
+    ],
+    "target": 13,
+    "pythonPrediction": 11.5
+  },
+  {
+    "date": "2026-09-12",
+    "minute": 1170,
+    "features": [
+      90,
+      6,
+      89
+    ],
+    "target": 10,
+    "pythonPrediction": 8.256410256410257
+  },
+  {
+    "date": "2026-09-12",
+    "minute": 1200,
+    "features": [
+      60,
+      6,
+      92
+    ],
+    "target": 7,
+    "pythonPrediction": 4.648648648648648
+  },
+  {
+    "date": "2026-09-12",
+    "minute": 1230,
+    "features": [
+      30,
+      6,
+      95
+    ],
+    "target": 4,
+    "pythonPrediction": 1.8333333333333333
+  },
+  {
+    "date": "2026-09-13",
+    "minute": 1020,
+    "features": [
+      240,
+      0,
+      62
+    ],
+    "target": 30,
+    "pythonPrediction": 30.153846153846153
+  },
+  {
+    "date": "2026-09-13",
+    "minute": 1050,
+    "features": [
+      210,
+      0,
+      70
+    ],
+    "target": 22,
+    "pythonPrediction": 24.8
+  },
+  {
+    "date": "2026-09-13",
+    "minute": 1080,
+    "features": [
+      180,
+      0,
+      73
+    ],
+    "target": 19,
+    "pythonPrediction": 19.57894736842105
+  },
+  {
+    "date": "2026-09-13",
+    "minute": 1110,
+    "features": [
+      150,
+      0,
+      74
+    ],
+    "target": 18,
+    "pythonPrediction": 15.714285714285714
+  },
+  {
+    "date": "2026-09-13",
+    "minute": 1140,
+    "features": [
+      120,
+      0,
+      80
+    ],
+    "target": 12,
+    "pythonPrediction": 12.45
+  },
+  {
+    "date": "2026-09-13",
+    "minute": 1170,
+    "features": [
+      90,
+      0,
+      85
+    ],
+    "target": 7,
+    "pythonPrediction": 8.894736842105264
+  },
+  {
+    "date": "2026-09-13",
+    "minute": 1200,
+    "features": [
+      60,
+      0,
+      89
+    ],
+    "target": 3,
+    "pythonPrediction": 5.076923076923077
+  },
+  {
+    "date": "2026-09-13",
+    "minute": 1230,
+    "features": [
+      30,
+      0,
+      91
+    ],
+    "target": 1,
+    "pythonPrediction": 1.8333333333333333
+  },
+  {
+    "date": "2026-09-14",
+    "minute": 1020,
+    "features": [
+      240,
+      1,
+      46
+    ],
+    "target": 19,
+    "pythonPrediction": 21.05263157894737
+  },
+  {
+    "date": "2026-09-14",
+    "minute": 1050,
+    "features": [
+      210,
+      1,
+      51
+    ],
+    "target": 14,
+    "pythonPrediction": 17.235294117647058
+  },
+  {
+    "date": "2026-09-14",
+    "minute": 1080,
+    "features": [
+      180,
+      1,
+      53
+    ],
+    "target": 12,
+    "pythonPrediction": 13.38888888888889
+  },
+  {
+    "date": "2026-09-14",
+    "minute": 1110,
+    "features": [
+      150,
+      1,
+      56
+    ],
+    "target": 9,
+    "pythonPrediction": 12.095238095238095
+  },
+  {
+    "date": "2026-09-14",
+    "minute": 1140,
+    "features": [
+      120,
+      1,
+      56
+    ],
+    "target": 9,
+    "pythonPrediction": 8.6
+  },
+  {
+    "date": "2026-09-14",
+    "minute": 1170,
+    "features": [
+      90,
+      1,
+      57
+    ],
+    "target": 8,
+    "pythonPrediction": 5.666666666666667
+  },
+  {
+    "date": "2026-09-14",
+    "minute": 1200,
+    "features": [
+      60,
+      1,
+      60
+    ],
+    "target": 5,
+    "pythonPrediction": 3.380952380952381
+  },
+  {
+    "date": "2026-09-14",
+    "minute": 1230,
+    "features": [
+      30,
+      1,
+      62
+    ],
+    "target": 3,
+    "pythonPrediction": 1.5714285714285714
+  },
+  {
+    "date": "2026-09-15",
+    "minute": 1020,
+    "features": [
+      240,
+      2,
+      48
+    ],
+    "target": 18,
+    "pythonPrediction": 23.142857142857142
+  },
+  {
+    "date": "2026-09-15",
+    "minute": 1050,
+    "features": [
+      210,
+      2,
+      51
+    ],
+    "target": 15,
+    "pythonPrediction": 17.235294117647058
+  },
+  {
+    "date": "2026-09-15",
+    "minute": 1080,
+    "features": [
+      180,
+      2,
+      55
+    ],
+    "target": 11,
+    "pythonPrediction": 13.38888888888889
+  },
+  {
+    "date": "2026-09-15",
+    "minute": 1110,
+    "features": [
+      150,
+      2,
+      59
+    ],
+    "target": 7,
+    "pythonPrediction": 12.095238095238095
+  },
+  {
+    "date": "2026-09-15",
+    "minute": 1140,
+    "features": [
+      120,
+      2,
+      62
+    ],
+    "target": 4,
+    "pythonPrediction": 8.846153846153847
+  },
+  {
+    "date": "2026-09-15",
+    "minute": 1170,
+    "features": [
+      90,
+      2,
+      65
+    ],
+    "target": 1,
+    "pythonPrediction": 6.578947368421052
+  },
+  {
+    "date": "2026-09-15",
+    "minute": 1200,
+    "features": [
+      60,
+      2,
+      65
+    ],
+    "target": 1,
+    "pythonPrediction": 3.5
+  },
+  {
+    "date": "2026-09-15",
+    "minute": 1230,
+    "features": [
+      30,
+      2,
+      65
+    ],
+    "target": 1,
+    "pythonPrediction": 2.0454545454545454
+  },
+  {
+    "date": "2026-09-16",
+    "minute": 1020,
+    "features": [
+      240,
+      3,
+      52
+    ],
+    "target": 23,
+    "pythonPrediction": 24.318181818181817
+  },
+  {
+    "date": "2026-09-16",
+    "minute": 1050,
+    "features": [
+      210,
+      3,
+      53
+    ],
+    "target": 22,
+    "pythonPrediction": 19.59090909090909
+  },
+  {
+    "date": "2026-09-16",
+    "minute": 1080,
+    "features": [
+      180,
+      3,
+      60
+    ],
+    "target": 15,
+    "pythonPrediction": 15.071428571428571
+  },
+  {
+    "date": "2026-09-16",
+    "minute": 1110,
+    "features": [
+      150,
+      3,
+      61
+    ],
+    "target": 14,
+    "pythonPrediction": 12.833333333333334
+  },
+  {
+    "date": "2026-09-16",
+    "minute": 1140,
+    "features": [
+      120,
+      3,
+      65
+    ],
+    "target": 10,
+    "pythonPrediction": 9.619047619047619
+  },
+  {
+    "date": "2026-09-16",
+    "minute": 1170,
+    "features": [
+      90,
+      3,
+      65
+    ],
+    "target": 10,
+    "pythonPrediction": 6.578947368421052
+  },
+  {
+    "date": "2026-09-16",
+    "minute": 1200,
+    "features": [
+      60,
+      3,
+      69
+    ],
+    "target": 6,
+    "pythonPrediction": 4.069767441860465
+  },
+  {
+    "date": "2026-09-16",
+    "minute": 1230,
+    "features": [
+      30,
+      3,
+      72
+    ],
+    "target": 3,
+    "pythonPrediction": 2.0454545454545454
+  },
+  {
+    "date": "2026-09-17",
+    "minute": 1020,
+    "features": [
+      240,
+      4,
+      44
+    ],
+    "target": 21,
+    "pythonPrediction": 21.05263157894737
+  },
+  {
+    "date": "2026-09-17",
+    "minute": 1050,
+    "features": [
+      210,
+      4,
+      50
+    ],
+    "target": 15,
+    "pythonPrediction": 19.59090909090909
+  },
+  {
+    "date": "2026-09-17",
+    "minute": 1080,
+    "features": [
+      180,
+      4,
+      51
+    ],
+    "target": 14,
+    "pythonPrediction": 15.923076923076923
+  },
+  {
+    "date": "2026-09-17",
+    "minute": 1110,
+    "features": [
+      150,
+      4,
+      53
+    ],
+    "target": 12,
+    "pythonPrediction": 11.0
+  },
+  {
+    "date": "2026-09-17",
+    "minute": 1140,
+    "features": [
+      120,
+      4,
+      57
+    ],
+    "target": 8,
+    "pythonPrediction": 9.619047619047619
+  },
+  {
+    "date": "2026-09-17",
+    "minute": 1170,
+    "features": [
+      90,
+      4,
+      61
+    ],
+    "target": 4,
+    "pythonPrediction": 6.578947368421052
+  },
+  {
+    "date": "2026-09-17",
+    "minute": 1200,
+    "features": [
+      60,
+      4,
+      64
+    ],
+    "target": 1,
+    "pythonPrediction": 3.5
+  },
+  {
+    "date": "2026-09-17",
+    "minute": 1230,
+    "features": [
+      30,
+      4,
+      64
+    ],
+    "target": 1,
+    "pythonPrediction": 2.0454545454545454
+  },
+  {
+    "date": "2026-09-18",
+    "minute": 1020,
+    "features": [
+      240,
+      5,
+      56
+    ],
+    "target": 30,
+    "pythonPrediction": 27.166666666666668
+  },
+  {
+    "date": "2026-09-18",
+    "minute": 1050,
+    "features": [
+      210,
+      5,
+      59
+    ],
+    "target": 27,
+    "pythonPrediction": 23.9
+  },
+  {
+    "date": "2026-09-18",
+    "minute": 1080,
+    "features": [
+      180,
+      5,
+      65
+    ],
+    "target": 21,
+    "pythonPrediction": 18.7
+  },
+  {
+    "date": "2026-09-18",
+    "minute": 1110,
+    "features": [
+      150,
+      5,
+      71
+    ],
+    "target": 15,
+    "pythonPrediction": 14.068965517241379
+  },
+  {
+    "date": "2026-09-18",
+    "minute": 1140,
+    "features": [
+      120,
+      5,
+      71
+    ],
+    "target": 15,
+    "pythonPrediction": 11.5
+  },
+  {
+    "date": "2026-09-18",
+    "minute": 1170,
+    "features": [
+      90,
+      5,
+      77
+    ],
+    "target": 9,
+    "pythonPrediction": 8.256410256410257
+  },
+  {
+    "date": "2026-09-18",
+    "minute": 1200,
+    "features": [
+      60,
+      5,
+      80
+    ],
+    "target": 6,
+    "pythonPrediction": 4.648648648648648
+  },
+  {
+    "date": "2026-09-18",
+    "minute": 1230,
+    "features": [
+      30,
+      5,
+      83
+    ],
+    "target": 3,
+    "pythonPrediction": 3.0
+  },
+  {
+    "date": "2026-09-19",
+    "minute": 1020,
+    "features": [
+      240,
+      6,
+      63
+    ],
+    "target": 35,
+    "pythonPrediction": 27.166666666666668
+  },
+  {
+    "date": "2026-09-19",
+    "minute": 1050,
+    "features": [
+      210,
+      6,
+      69
+    ],
+    "target": 29,
+    "pythonPrediction": 23.9
+  },
+  {
+    "date": "2026-09-19",
+    "minute": 1080,
+    "features": [
+      180,
+      6,
+      76
+    ],
+    "target": 22,
+    "pythonPrediction": 18.7
+  },
+  {
+    "date": "2026-09-19",
+    "minute": 1110,
+    "features": [
+      150,
+      6,
+      79
+    ],
+    "target": 19,
+    "pythonPrediction": 14.068965517241379
+  },
+  {
+    "date": "2026-09-19",
+    "minute": 1140,
+    "features": [
+      120,
+      6,
+      85
+    ],
+    "target": 13,
+    "pythonPrediction": 11.5
+  },
+  {
+    "date": "2026-09-19",
+    "minute": 1170,
+    "features": [
+      90,
+      6,
+      89
+    ],
+    "target": 9,
+    "pythonPrediction": 8.256410256410257
+  },
+  {
+    "date": "2026-09-19",
+    "minute": 1200,
+    "features": [
+      60,
+      6,
+      92
+    ],
+    "target": 6,
+    "pythonPrediction": 4.648648648648648
+  },
+  {
+    "date": "2026-09-19",
+    "minute": 1230,
+    "features": [
+      30,
+      6,
+      95
+    ],
+    "target": 3,
+    "pythonPrediction": 1.8333333333333333
+  },
+  {
+    "date": "2026-09-20",
+    "minute": 1020,
+    "features": [
+      240,
+      0,
+      66
+    ],
+    "target": 32,
+    "pythonPrediction": 30.80952380952381
+  },
+  {
+    "date": "2026-09-20",
+    "minute": 1050,
+    "features": [
+      210,
+      0,
+      74
+    ],
+    "target": 24,
+    "pythonPrediction": 24.8
+  },
+  {
+    "date": "2026-09-20",
+    "minute": 1080,
+    "features": [
+      180,
+      0,
+      79
+    ],
+    "target": 19,
+    "pythonPrediction": 19.57894736842105
+  },
+  {
+    "date": "2026-09-20",
+    "minute": 1110,
+    "features": [
+      150,
+      0,
+      81
+    ],
+    "target": 17,
+    "pythonPrediction": 15.714285714285714
+  },
+  {
+    "date": "2026-09-20",
+    "minute": 1140,
+    "features": [
+      120,
+      0,
+      86
+    ],
+    "target": 12,
+    "pythonPrediction": 12.45
+  },
+  {
+    "date": "2026-09-20",
+    "minute": 1170,
+    "features": [
+      90,
+      0,
+      89
+    ],
+    "target": 9,
+    "pythonPrediction": 8.894736842105264
+  },
+  {
+    "date": "2026-09-20",
+    "minute": 1200,
+    "features": [
+      60,
+      0,
+      93
+    ],
+    "target": 5,
+    "pythonPrediction": 5.076923076923077
+  },
+  {
+    "date": "2026-09-20",
+    "minute": 1230,
+    "features": [
+      30,
+      0,
+      95
+    ],
+    "target": 3,
+    "pythonPrediction": 1.8333333333333333
+  },
+  {
+    "date": "2026-09-21",
+    "minute": 1020,
+    "features": [
+      240,
+      1,
+      53
+    ],
+    "target": 25,
+    "pythonPrediction": 23.142857142857142
+  },
+  {
+    "date": "2026-09-21",
+    "minute": 1050,
+    "features": [
+      210,
+      1,
+      58
+    ],
+    "target": 20,
+    "pythonPrediction": 20.916666666666668
+  },
+  {
+    "date": "2026-09-21",
+    "minute": 1080,
+    "features": [
+      180,
+      1,
+      61
+    ],
+    "target": 17,
+    "pythonPrediction": 14.933333333333334
+  },
+  {
+    "date": "2026-09-21",
+    "minute": 1110,
+    "features": [
+      150,
+      1,
+      65
+    ],
+    "target": 13,
+    "pythonPrediction": 12.095238095238095
+  },
+  {
+    "date": "2026-09-21",
+    "minute": 1140,
+    "features": [
+      120,
+      1,
+      69
+    ],
+    "target": 9,
+    "pythonPrediction": 10.268292682926829
+  },
+  {
+    "date": "2026-09-21",
+    "minute": 1170,
+    "features": [
+      90,
+      1,
+      70
+    ],
+    "target": 8,
+    "pythonPrediction": 5.666666666666667
+  },
+  {
+    "date": "2026-09-21",
+    "minute": 1200,
+    "features": [
+      60,
+      1,
+      74
+    ],
+    "target": 4,
+    "pythonPrediction": 3.380952380952381
+  },
+  {
+    "date": "2026-09-21",
+    "minute": 1230,
+    "features": [
+      30,
+      1,
+      77
+    ],
+    "target": 1,
+    "pythonPrediction": 1.5714285714285714
+  },
+  {
+    "date": "2026-09-22",
+    "minute": 1020,
+    "features": [
+      240,
+      2,
+      47
+    ],
+    "target": 25,
+    "pythonPrediction": 23.142857142857142
+  },
+  {
+    "date": "2026-09-22",
+    "minute": 1050,
+    "features": [
+      210,
+      2,
+      51
+    ],
+    "target": 21,
+    "pythonPrediction": 17.235294117647058
+  },
+  {
+    "date": "2026-09-22",
+    "minute": 1080,
+    "features": [
+      180,
+      2,
+      55
+    ],
+    "target": 17,
+    "pythonPrediction": 13.38888888888889
+  },
+  {
+    "date": "2026-09-22",
+    "minute": 1110,
+    "features": [
+      150,
+      2,
+      58
+    ],
+    "target": 14,
+    "pythonPrediction": 12.095238095238095
+  },
+  {
+    "date": "2026-09-22",
+    "minute": 1140,
+    "features": [
+      120,
+      2,
+      61
+    ],
+    "target": 11,
+    "pythonPrediction": 8.846153846153847
+  },
+  {
+    "date": "2026-09-22",
+    "minute": 1170,
+    "features": [
+      90,
+      2,
+      64
+    ],
+    "target": 8,
+    "pythonPrediction": 6.578947368421052
+  },
+  {
+    "date": "2026-09-22",
+    "minute": 1200,
+    "features": [
+      60,
+      2,
+      67
+    ],
+    "target": 5,
+    "pythonPrediction": 4.069767441860465
+  },
+  {
+    "date": "2026-09-22",
+    "minute": 1230,
+    "features": [
+      30,
+      2,
+      70
+    ],
+    "target": 2,
+    "pythonPrediction": 2.0454545454545454
+  },
+  {
+    "date": "2026-09-23",
+    "minute": 1020,
+    "features": [
+      240,
+      3,
+      47
+    ],
+    "target": 32,
+    "pythonPrediction": 24.318181818181817
+  },
+  {
+    "date": "2026-09-23",
+    "minute": 1050,
+    "features": [
+      210,
+      3,
+      49
+    ],
+    "target": 30,
+    "pythonPrediction": 19.59090909090909
+  },
+  {
+    "date": "2026-09-23",
+    "minute": 1080,
+    "features": [
+      180,
+      3,
+      58
+    ],
+    "target": 21,
+    "pythonPrediction": 15.071428571428571
+  },
+  {
+    "date": "2026-09-23",
+    "minute": 1110,
+    "features": [
+      150,
+      3,
+      62
+    ],
+    "target": 17,
+    "pythonPrediction": 12.833333333333334
+  },
+  {
+    "date": "2026-09-23",
+    "minute": 1140,
+    "features": [
+      120,
+      3,
+      66
+    ],
+    "target": 13,
+    "pythonPrediction": 9.619047619047619
+  },
+  {
+    "date": "2026-09-23",
+    "minute": 1170,
+    "features": [
+      90,
+      3,
+      68
+    ],
+    "target": 11,
+    "pythonPrediction": 6.578947368421052
+  },
+  {
+    "date": "2026-09-23",
+    "minute": 1200,
+    "features": [
+      60,
+      3,
+      74
+    ],
+    "target": 5,
+    "pythonPrediction": 4.069767441860465
+  },
+  {
+    "date": "2026-09-23",
+    "minute": 1230,
+    "features": [
+      30,
+      3,
+      76
+    ],
+    "target": 3,
+    "pythonPrediction": 2.0454545454545454
+  },
+  {
+    "date": "2026-09-24",
+    "minute": 1020,
+    "features": [
+      240,
+      4,
+      48
+    ],
+    "target": 23,
+    "pythonPrediction": 24.318181818181817
+  },
+  {
+    "date": "2026-09-24",
+    "minute": 1050,
+    "features": [
+      210,
+      4,
+      51
+    ],
+    "target": 20,
+    "pythonPrediction": 19.59090909090909
+  },
+  {
+    "date": "2026-09-24",
+    "minute": 1080,
+    "features": [
+      180,
+      4,
+      55
+    ],
+    "target": 16,
+    "pythonPrediction": 15.923076923076923
+  },
+  {
+    "date": "2026-09-24",
+    "minute": 1110,
+    "features": [
+      150,
+      4,
+      56
+    ],
+    "target": 15,
+    "pythonPrediction": 12.833333333333334
+  },
+  {
+    "date": "2026-09-24",
+    "minute": 1140,
+    "features": [
+      120,
+      4,
+      61
+    ],
+    "target": 10,
+    "pythonPrediction": 9.619047619047619
+  },
+  {
+    "date": "2026-09-24",
+    "minute": 1170,
+    "features": [
+      90,
+      4,
+      64
+    ],
+    "target": 7,
+    "pythonPrediction": 6.578947368421052
+  },
+  {
+    "date": "2026-09-24",
+    "minute": 1200,
+    "features": [
+      60,
+      4,
+      66
+    ],
+    "target": 5,
+    "pythonPrediction": 4.069767441860465
+  },
+  {
+    "date": "2026-09-24",
+    "minute": 1230,
+    "features": [
+      30,
+      4,
+      70
+    ],
+    "target": 1,
+    "pythonPrediction": 2.0454545454545454
+  },
+  {
+    "date": "2026-09-25",
+    "minute": 1020,
+    "features": [
+      240,
+      5,
+      51
+    ],
+    "target": 26,
+    "pythonPrediction": 24.318181818181817
+  },
+  {
+    "date": "2026-09-25",
+    "minute": 1050,
+    "features": [
+      210,
+      5,
+      55
+    ],
+    "target": 22,
+    "pythonPrediction": 19.59090909090909
+  },
+  {
+    "date": "2026-09-25",
+    "minute": 1080,
+    "features": [
+      180,
+      5,
+      59
+    ],
+    "target": 18,
+    "pythonPrediction": 15.923076923076923
+  },
+  {
+    "date": "2026-09-25",
+    "minute": 1110,
+    "features": [
+      150,
+      5,
+      61
+    ],
+    "target": 16,
+    "pythonPrediction": 12.833333333333334
+  },
+  {
+    "date": "2026-09-25",
+    "minute": 1140,
+    "features": [
+      120,
+      5,
+      67
+    ],
+    "target": 10,
+    "pythonPrediction": 11.5
+  },
+  {
+    "date": "2026-09-25",
+    "minute": 1170,
+    "features": [
+      90,
+      5,
+      70
+    ],
+    "target": 7,
+    "pythonPrediction": 6.578947368421052
+  },
+  {
+    "date": "2026-09-25",
+    "minute": 1200,
+    "features": [
+      60,
+      5,
+      73
+    ],
+    "target": 4,
+    "pythonPrediction": 4.069767441860465
+  },
+  {
+    "date": "2026-09-25",
+    "minute": 1230,
+    "features": [
+      30,
+      5,
+      75
+    ],
+    "target": 2,
+    "pythonPrediction": 2.0454545454545454
+  },
+  {
+    "date": "2026-09-26",
+    "minute": 1020,
+    "features": [
+      240,
+      6,
+      60
+    ],
+    "target": 24,
+    "pythonPrediction": 27.166666666666668
+  },
+  {
+    "date": "2026-09-26",
+    "minute": 1050,
+    "features": [
+      210,
+      6,
+      66
+    ],
+    "target": 18,
+    "pythonPrediction": 23.9
+  },
+  {
+    "date": "2026-09-26",
+    "minute": 1080,
+    "features": [
+      180,
+      6,
+      69
+    ],
+    "target": 15,
+    "pythonPrediction": 18.7
+  },
+  {
+    "date": "2026-09-26",
+    "minute": 1110,
+    "features": [
+      150,
+      6,
+      75
+    ],
+    "target": 9,
+    "pythonPrediction": 14.068965517241379
+  },
+  {
+    "date": "2026-09-26",
+    "minute": 1140,
+    "features": [
+      120,
+      6,
+      76
+    ],
+    "target": 8,
+    "pythonPrediction": 11.5
+  },
+  {
+    "date": "2026-09-26",
+    "minute": 1170,
+    "features": [
+      90,
+      6,
+      79
+    ],
+    "target": 5,
+    "pythonPrediction": 8.256410256410257
+  },
+  {
+    "date": "2026-09-26",
+    "minute": 1200,
+    "features": [
+      60,
+      6,
+      81
+    ],
+    "target": 3,
+    "pythonPrediction": 4.648648648648648
+  },
+  {
+    "date": "2026-09-26",
+    "minute": 1230,
+    "features": [
+      30,
+      6,
+      84
+    ],
+    "target": 0,
+    "pythonPrediction": 3.0
+  },
+  {
+    "date": "2026-09-27",
+    "minute": 1020,
+    "features": [
+      240,
+      0,
+      63
+    ],
+    "target": 27,
+    "pythonPrediction": 30.153846153846153
+  },
+  {
+    "date": "2026-09-27",
+    "minute": 1050,
+    "features": [
+      210,
+      0,
+      67
+    ],
+    "target": 23,
+    "pythonPrediction": 24.8
+  },
+  {
+    "date": "2026-09-27",
+    "minute": 1080,
+    "features": [
+      180,
+      0,
+      73
+    ],
+    "target": 17,
+    "pythonPrediction": 19.57894736842105
+  },
+  {
+    "date": "2026-09-27",
+    "minute": 1110,
+    "features": [
+      150,
+      0,
+      76
+    ],
+    "target": 14,
+    "pythonPrediction": 15.714285714285714
+  },
+  {
+    "date": "2026-09-27",
+    "minute": 1140,
+    "features": [
+      120,
+      0,
+      78
+    ],
+    "target": 12,
+    "pythonPrediction": 12.45
+  },
+  {
+    "date": "2026-09-27",
+    "minute": 1170,
+    "features": [
+      90,
+      0,
+      81
+    ],
+    "target": 9,
+    "pythonPrediction": 8.894736842105264
+  },
+  {
+    "date": "2026-09-27",
+    "minute": 1200,
+    "features": [
+      60,
+      0,
+      84
+    ],
+    "target": 6,
+    "pythonPrediction": 4.833333333333333
+  },
+  {
+    "date": "2026-09-27",
+    "minute": 1230,
+    "features": [
+      30,
+      0,
+      89
+    ],
+    "target": 1,
+    "pythonPrediction": 2.2758620689655173
+  }
+]

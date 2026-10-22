@@ -3,11 +3,12 @@
 import { useState } from "react";
 import Link from "next/link";
 import {
-  updateStock,
+  updateInventory,
   markCollected,
   resetDemo,
 } from "@/lib/demo-store";
 import { useDemoState } from "@/hooks/use-demo-state";
+import { getForecastContext } from "@/lib/prediction/context";
 
 export default function MerchantPage() {
   const { products, offers, reservations, error: loadError, loading, refresh } = useDemoState();
@@ -25,7 +26,13 @@ export default function MerchantPage() {
         throw new Error("Enter a stock quantity.");
       }
 
-      updateStock(productId, Number(value));
+      const sales = String(formData.get("salesSoFar") ?? "").trim();
+      if (!sales) throw new Error("Enter sales so far.");
+      updateInventory(productId, Number(value), {
+        date: String(formData.get("date") ?? ""),
+        time: String(formData.get("time") ?? ""),
+        salesSoFar: Number(sales),
+      });
 
       refresh();
       setError("");
@@ -100,6 +107,7 @@ export default function MerchantPage() {
         <h2 className="text-xl font-semibold">Inventory</h2>
 
         {products.map((product) => {
+          const context = getForecastContext(product);
           const hasPublishedOffer = offers.some(
             (offer) => offer.productId === product.id
           );
@@ -111,12 +119,14 @@ export default function MerchantPage() {
               <p>Price: RM{product.originalPrice.toFixed(2)}</p>
 
               <form
+                key={JSON.stringify([product.currentStock, context])}
                 className="mt-3 flex flex-wrap gap-2"
                 onSubmit={(event) => {
                   event.preventDefault();
                   handleStockUpdate(product.id, event.currentTarget);
                 }}
               >
+                <label className="space-y-1 text-sm">Current stock
                 <input
                   key={product.currentStock}
                   name="stock"
@@ -129,15 +139,28 @@ export default function MerchantPage() {
                   aria-label={`Stock for ${product.name}`}
                   className="w-24 rounded-md border px-3 py-2 disabled:opacity-50"
                 />
+                </label>
+                <label className="space-y-1 text-sm">Sales so far
+                  <input name="salesSoFar" aria-label="Sales so far" type="number" min="0" step="1" required defaultValue={context.salesSoFar} disabled={hasPublishedOffer} className="block w-28 rounded-md border px-3 py-2 disabled:opacity-50" />
+                </label>
+                <label className="space-y-1 text-sm">Demo date
+                  <input name="date" aria-label="Demo date" type="date" required defaultValue={context.date} disabled={hasPublishedOffer} className="block rounded-md border px-3 py-2 disabled:opacity-50" />
+                </label>
+                <label className="space-y-1 text-sm">Demo time
+                  <select name="time" aria-label="Demo time" defaultValue={context.time} disabled={hasPublishedOffer} className="block rounded-md border px-3 py-2 disabled:opacity-50">
+                    {["17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00"].map((time) => <option key={time} value={time}>{time}</option>)}
+                  </select>
+                </label>
 
                 <button
                   type="submit"
                   disabled={hasPublishedOffer}
                   className="rounded-md bg-primary px-4 py-2 text-primary-foreground disabled:opacity-50"
                 >
-                  Save stock
+                  Save inventory
                 </button>
               </form>
+              <p className="mt-2 text-sm text-muted-foreground">The trained forecast uses sales so far, weekday and time until closing. These are demo inputs, not live transactions. Closing time: 21:00.</p>
 
               {hasPublishedOffer && (
                 <p className="mt-2 text-sm text-muted-foreground">

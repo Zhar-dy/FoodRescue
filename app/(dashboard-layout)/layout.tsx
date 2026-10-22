@@ -18,7 +18,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </header>
       <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6">{children}</main>
       <footer className="mx-auto max-w-6xl border-t border-[#dce3d8] px-4 py-5 text-xs leading-5 text-[#647269] sm:px-6">
-        Demonstration only · Fixed time 7:30 PM, closing 9 PM · Data stays in this browser.
+        Demonstration only · Selectable demo clock, closing 9 PM · Data stays in this browser.
       </footer>
     </div>
   );

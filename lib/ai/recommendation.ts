@@ -3,12 +3,13 @@ import type {
   Product,
   Recommendation,
 } from "@/types/foodrescue";
+import { getForecastContext } from "@/lib/prediction/context";
 
 export function generateRecommendation(
   product: Product,
   prediction: Prediction
 ): Recommendation {
-  const quantity = Math.max(
+  const quantity = prediction.isClosed ? 0 : Math.max(
     0,
     Math.min(
       Math.floor(prediction.predictedUnsold),
@@ -17,7 +18,7 @@ export function generateRecommendation(
   );
 
   const discountPercent =
-    quantity >= product.currentStock / 2 && quantity > 0
+    quantity === 0 ? 0 : quantity >= product.currentStock / 2
       ? 50
       : 30;
 
@@ -36,7 +37,9 @@ export function generateRecommendation(
     quantity > 0
       ? `${quantity} units predicted to remain unsold`
       : "No surplus available to recommend",
-    discountPercent === 50
+    quantity === 0
+      ? "No rescue offer should be published"
+      : discountPercent === 50
       ? "Predicted surplus is at least half the available stock"
       : "A 30% discount is recommended for a smaller surplus",
     "Expected sell-through is a demo estimate",
@@ -46,7 +49,7 @@ export function generateRecommendation(
     productId: product.id,
     quantity,
     discountPercent,
-    publishAt: "20:00",
+    publishAt: getForecastContext(product).time > "20:00" ? getForecastContext(product).time : "20:00",
     expectedSellThrough,
     expectedRevenueRecovered,
     reasoning,

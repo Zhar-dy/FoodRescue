@@ -1,55 +1,48 @@
-import syntheticData from "@/data/synthetic-sales.json";
+import model from "@/data/models/surplus-tree.json";
 import type { Prediction, Product } from "@/types/foodrescue";
+import { getForecastContext, getForecastFeatures } from "@/lib/prediction/context";
+import { predictTree } from "@/lib/prediction/tree";
 
 export interface PredictionResult extends Prediction {
   expectedRemainingSales: number;
+  rawExpectedRemainingSales: number;
+  baselineExpectedRemainingSales: number;
   currentStock: number;
   demoTime: string;
   explanation: string;
   isSynthetic: true;
+  method: "trained-tree" | "baseline-fallback" | "closed";
+  evaluation: typeof model.evaluation;
 }
 
 export function predictSurplus(product: Product): PredictionResult {
   if (!Number.isSafeInteger(product.currentStock) || product.currentStock < 0) {
     throw new Error("Stock must be a nonnegative whole number.");
   }
-
-  const DEMO_TIME_LABEL = "7:30 PM";
-  const totalDays = syntheticData.dailyData.length;
-  if (totalDays === 0) {
-    throw new Error("Synthetic sales history is missing.");
-  }
-  let totalHour19Sales = 0;
-  let totalHour20Sales = 0;
-
-  syntheticData.dailyData.forEach((day) => {
-    totalHour19Sales += day.hourlySales["19"] || 0;
-    totalHour20Sales += day.hourlySales["20"] || 0;
-  });
-
-  const avgHour19Sales = totalHour19Sales / totalDays;
-  const avgHour20Sales = totalHour20Sales / totalDays;
-
-  const remainingSales730To800 = avgHour19Sales * 0.5;
-  const remainingSales800To900 = avgHour20Sales;
-  
-  const rawExpectedRemainingSales = remainingSales730To800 + remainingSales800To900;
-  const expectedRemainingSales = Math.round(rawExpectedRemainingSales);
-
-  const cappedExpectedSales = Math.min(product.currentStock, expectedRemainingSales);
-  const predictedUnsold = product.currentStock - cappedExpectedSales;
-
-  const explanation = `At ${DEMO_TIME_LABEL}, closing at 9:00 PM, ${totalDays} simulated days (${syntheticData.hourlyObservations.toLocaleString("en-MY")} hourly observations) suggest about ${remainingSales730To800.toFixed(1)} regular sales before 8:00 PM and ${remainingSales800To900.toFixed(1)} after that. This is approximately ${expectedRemainingSales} items of demand. With ${product.currentStock} in stock, up to ${cappedExpectedSales} may sell and ${predictedUnsold} may remain. This single-product baseline uses assumed sales patterns; more synthetic rows do not establish real-world accuracy.`;
-
+  if (product.id !== model.productId) throw new Error("This demo model supports Chocolate Bun only.");
+  const context = getForecastContext(product);
+  const features = getForecastFeatures(context);
+  const [minutesLeft] = features;
+  const isClosed = minutesLeft === 0;
+  const baselineTable = model.baselineByMinutesLeft as Record<string, number>;
+  const baseline = isClosed ? 0 : baselineTable[String(minutesLeft)];
+  const salesRange = model.featureRanges.salesSoFar;
+  const outsideRange = context.salesSoFar < salesRange.min || context.salesSoFar > salesRange.max;
+  const method = isClosed ? "closed" : outsideRange ? "baseline-fallback" : "trained-tree";
+  const raw = isClosed ? 0 : outsideRange ? baseline : predictTree(model, features);
+  if (!Number.isFinite(raw) || raw < 0) throw new Error("Cannot calculate a valid demand forecast.");
+  const expectedRemainingSales = Math.min(product.currentStock, Math.round(raw));
+  const predictedUnsold = product.currentStock - expectedRemainingSales;
+  const explanation = isClosed
+    ? "The bakery is closed at the selected demo time. Remaining stock is not offered for a new reservation."
+    : method === "baseline-fallback"
+      ? "Sales so far is outside the training range (" + salesRange.min + "–" + salesRange.max + "). Using the training-days average as a fallback: approximately " + expectedRemainingSales + " further sales and " + predictedUnsold + " leftovers."
+      : "The trained decision tree uses weekday, time until closing and sales so far. At " + context.time + ", it estimates " + expectedRemainingSales + " further regular sales and " + predictedUnsold + " leftovers from stock " + product.currentStock + ".";
   return {
-    productId: product.id,
-    predictedUnsold,
-    // Unmeasured compatibility field; the UI deliberately shows no accuracy claim.
-    confidence: 0,
-    expectedRemainingSales: cappedExpectedSales,
-    currentStock: product.currentStock,
-    demoTime: DEMO_TIME_LABEL,
-    explanation,
-    isSynthetic: true,
+    productId: product.id, predictedUnsold, confidence: 0,
+    expectedRemainingSales, rawExpectedRemainingSales: raw,
+    baselineExpectedRemainingSales: Math.min(product.currentStock, Math.round(baseline)),
+    currentStock: product.currentStock, demoTime: context.time,
+    explanation, isSynthetic: true, isClosed, method, evaluation: model.evaluation,
   };
 }

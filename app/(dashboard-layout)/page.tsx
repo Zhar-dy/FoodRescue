@@ -8,7 +8,7 @@ export default function HomePage() {
         <p className="text-sm font-semibold text-[#b9edaa]">GOOD FOOD. A SECOND CHANCE.</p>
         <h1 className="mt-4 max-w-3xl text-4xl font-bold tracking-tight sm:text-5xl">Predict surplus. Rescue it before closing.</h1>
         <p className="mt-5 max-w-2xl leading-7 text-emerald-50/90">FoodRescue AI helps township bakeries estimate unsold food, publish a rescue offer, and connect with nearby residents who can collect it.</p>
-        <p className="mt-5 text-sm text-emerald-100">A working demonstration with synthetic history and baseline forecasting.</p>
+        <p className="mt-5 text-sm text-emerald-100">Machine-learning forecasting trained on synthetic bakery history, connected to a working rescue flow.</p>
       </section>
       <div className="grid gap-4 md:grid-cols-2">
         {[

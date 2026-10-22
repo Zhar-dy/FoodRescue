@@ -1,3 +1,9 @@
+export interface ForecastContext {
+  date: string;
+  time: string;
+  salesSoFar: number;
+}
+
 export interface Product {
   id: string;
   merchantId: string;
@@ -5,12 +11,14 @@ export interface Product {
   category: string;
   originalPrice: number;
   currentStock: number;
+  forecast?: ForecastContext;
 }
 
 export interface Prediction {
   productId: string;
   predictedUnsold: number;
   confidence: number;
+  isClosed?: boolean;
 }
 
 export interface Recommendation {
