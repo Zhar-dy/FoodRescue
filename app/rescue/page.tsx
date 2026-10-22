@@ -308,7 +308,7 @@ export default function RescuePage() {
                           </p>
                         </div>
                         <span className="shrink-0 rounded-full bg-[#f3f6ef] px-2.5 py-1 text-xs font-medium text-[#536458]">
-                          {DEMO_DISTANCE}
+                          {DEMO_DISTANCE} · demo distance
                         </span>
                       </div>
 
