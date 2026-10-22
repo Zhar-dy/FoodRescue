@@ -1,24 +1,24 @@
 import syntheticData from "@/data/synthetic-sales.json";
+import type { Prediction, Product } from "@/types/foodrescue";
 
-export interface Product {
-  id: string;
-  name: string;
-  stock: number;
-  price?: number;
-}
-
-export interface PredictionResult {
-  predictedLeftovers: number;
+export interface PredictionResult extends Prediction {
   expectedRemainingSales: number;
   currentStock: number;
   demoTime: string;
   explanation: string;
-  isSynthetic: boolean;
+  isSynthetic: true;
 }
 
 export function predictSurplus(product: Product): PredictionResult {
+  if (!Number.isSafeInteger(product.currentStock) || product.currentStock < 0) {
+    throw new Error("Stock must be a nonnegative whole number.");
+  }
+
   const DEMO_TIME_LABEL = "7:30 PM";
   const totalDays = syntheticData.dailyData.length;
+  if (totalDays === 0) {
+    throw new Error("Synthetic sales history is missing.");
+  }
   let totalHour19Sales = 0;
   let totalHour20Sales = 0;
 
@@ -36,16 +36,18 @@ export function predictSurplus(product: Product): PredictionResult {
   const rawExpectedRemainingSales = remainingSales730To800 + remainingSales800To900;
   const expectedRemainingSales = Math.round(rawExpectedRemainingSales);
 
-  const cappedExpectedSales = Math.min(product.stock, expectedRemainingSales);
-  const calculatedLeftovers = product.stock - cappedExpectedSales;
-  const predictedLeftovers = Math.max(0, Math.min(product.stock, calculatedLeftovers));
+  const cappedExpectedSales = Math.min(product.currentStock, expectedRemainingSales);
+  const predictedUnsold = product.currentStock - cappedExpectedSales;
 
-  const explanation = `At ${DEMO_TIME_LABEL}, with closing time at 9:00 PM, based on a 30-day synthetic hourly average (~${remainingSales730To800.toFixed(1)} items for 7:30–8:00 PM and ~${remainingSales800To900.toFixed(1)} items for 8:00–9:00 PM), expected remaining sales are approximately ${expectedRemainingSales} unit(s)[cite: 1]. With a current stock of ${product.stock}, leftover prediction is ${predictedLeftovers} unit(s)[cite: 1].`;
+  const explanation = `At ${DEMO_TIME_LABEL}, closing at 9:00 PM, the ${totalDays}-day synthetic history suggests about ${remainingSales730To800.toFixed(1)} regular sales before 8:00 PM and ${remainingSales800To900.toFixed(1)} after that. This is approximately ${expectedRemainingSales} items of demand. With ${product.currentStock} in stock, up to ${cappedExpectedSales} may sell and ${predictedUnsold} may remain. This baseline uses assumed sales patterns, not validated real-world accuracy.`;
 
   return {
-    predictedLeftovers,
+    productId: product.id,
+    predictedUnsold,
+    // Unmeasured compatibility field; the UI deliberately shows no accuracy claim.
+    confidence: 0,
     expectedRemainingSales: cappedExpectedSales,
-    currentStock: product.stock,
+    currentStock: product.currentStock,
     demoTime: DEMO_TIME_LABEL,
     explanation,
     isSynthetic: true,

@@ -38,6 +38,7 @@ import { uniqueId } from "lodash";
 
 import {
   House,
+  TrendingUp,
   LucideIcon,
 } from "lucide-react";
 
@@ -50,6 +51,12 @@ const SidebarContent: MenuItem[] = [
         name: "Dashboard",
         icon: House,
         url: "/",
+      },
+      {
+        id: uniqueId(),
+        name: "AI Predictions",
+        icon: TrendingUp,
+        url: "/merchant/predictions",
       },
     ],
   },
