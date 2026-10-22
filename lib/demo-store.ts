@@ -22,6 +22,14 @@ function createInitialState(): DemoState {
   };
 }
 
+function writeState(state: DemoState): void {
+  if (typeof window === "undefined") {
+    throw new Error("Demo storage must be accessed in the browser.");
+  }
+
+  window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+
 function readState(): DemoState {
   if (typeof window === "undefined") {
     throw new Error("Demo storage must be accessed in the browser.");
@@ -34,34 +42,28 @@ function readState(): DemoState {
   }
 
   const initialState = createInitialState();
-
-  window.localStorage.setItem(
-    STORAGE_KEY,
-    JSON.stringify(initialState)
-  );
+  writeState(initialState);
 
   return initialState;
 }
+
+// Read saved data.
 
 export function getProducts(): Product[] {
   return readState().products;
 }
 
-function writeState(state: DemoState): void {
-  if (typeof window === "undefined") {
-    throw new Error("Demo storage must be accessed in the browser.");
-  }
-
-  window.localStorage.setItem(
-    STORAGE_KEY,
-    JSON.stringify(state)
-  );
+export function getOffers(): Offer[] {
+  return readState().offers;
 }
 
-export function updateStock(
-  productId: string,
-  stock: number
-): void {
+export function getReservations(): Reservation[] {
+  return readState().reservations;
+}
+
+// Edit stock before an offer is published.
+
+export function updateStock(productId: string, stock: number): void {
   if (!Number.isSafeInteger(stock) || stock < 0) {
     throw new Error("Stock must be a nonnegative whole number.");
   }
@@ -88,9 +90,7 @@ export function updateStock(
   writeState(state);
 }
 
-export function getOffers(): Offer[] {
-  return readState().offers;
-}
+// Publish one offer per product.
 
 export function createOffer(
   product: Product,
@@ -154,20 +154,16 @@ export function createOffer(
   return offer;
 }
 
-export function resetDemo(): void {
-  writeState(createInitialState());
-}
-
-export function getReservations(): Reservation[] {
-  return readState().reservations;
-}
+// Hold units for a resident. Physical stock does not change yet.
 
 export function reserveOffer(
   offerId: string,
   quantity: number
 ): Reservation {
   if (!Number.isSafeInteger(quantity) || quantity <= 0) {
-    throw new Error("Reservation quantity must be a positive whole number.");
+    throw new Error(
+      "Reservation quantity must be a positive whole number."
+    );
   }
 
   const state = readState();
@@ -197,4 +193,57 @@ export function reserveOffer(
   writeState(state);
 
   return reservation;
+}
+
+// Confirm pickup and subtract physical stock exactly once.
+
+export function markCollected(reservationId: string): void {
+  const state = readState();
+
+  const reservation = state.reservations.find(
+    (reservation) => reservation.id === reservationId
+  );
+
+  if (!reservation) {
+    throw new Error("Reservation not found.");
+  }
+
+  if (reservation.status === "collected") {
+    return;
+  }
+
+  if (reservation.status !== "reserved") {
+    throw new Error("Only reserved items can be collected.");
+  }
+
+  const offer = state.offers.find(
+    (offer) => offer.id === reservation.offerId
+  );
+
+  if (!offer) {
+    throw new Error("Offer not found.");
+  }
+
+  const product = state.products.find(
+    (product) => product.id === offer.productId
+  );
+
+  if (!product) {
+    throw new Error("Product not found.");
+  }
+
+  if (product.currentStock < reservation.quantity) {
+    throw new Error("Not enough physical stock to confirm pickup.");
+  }
+
+  product.currentStock -= reservation.quantity;
+  reservation.status = "collected";
+
+  writeState(state);
+}
+
+// Restore the starting demo.
+
+export function resetDemo(): void {
+  writeState(createInitialState());
 }
