@@ -1,42 +1,17 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import {
-  getProducts,
   updateStock,
-  getOffers,
-  createOffer,
-  getReservations,
-  reserveOffer,
   markCollected,
   resetDemo,
 } from "@/lib/demo-store";
-import { demoRecommendation } from "@/data/demo";
-import type {
-  Product,
-  Offer,
-  Reservation,
-} from "@/types/foodrescue";
+import { useDemoState } from "@/hooks/use-demo-state";
 
 export default function MerchantPage() {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [offers, setOffers] = useState<Offer[]>([]);
-  const [reservations, setReservations] = useState<Reservation[]>([]);
+  const { products, offers, reservations, error: loadError, loading, refresh } = useDemoState();
   const [error, setError] = useState("");
-
-  // Load saved data after the page opens in the browser.
-  useEffect(() => {
-    try {
-      setProducts(getProducts());
-      setOffers(getOffers());
-      setReservations(getReservations());
-    } catch (error) {
-      setError(
-        error instanceof Error ? error.message : "Cannot load demo data."
-      );
-    }
-  }, []);
 
   function handleStockUpdate(
     productId: string,
@@ -52,7 +27,7 @@ export default function MerchantPage() {
 
       updateStock(productId, Number(value));
 
-      setProducts(getProducts());
+      refresh();
       setError("");
     } catch (error) {
       setError(
@@ -61,40 +36,11 @@ export default function MerchantPage() {
     }
   }
 
-  function handlePublishOffer(product: Product) {
-    try {
-      createOffer(product, demoRecommendation);
-
-      setOffers(getOffers());
-      setError("");
-    } catch (error) {
-      setError(
-        error instanceof Error ? error.message : "Cannot publish offer."
-      );
-    }
-  }
-
-  function handleTestReservation(offerId: string) {
-    try {
-      reserveOffer(offerId, 2);
-
-      setOffers(getOffers());
-      setReservations(getReservations());
-      setError("");
-    } catch (error) {
-      setError(
-        error instanceof Error ? error.message : "Cannot reserve offer."
-      );
-    }
-  }
-
   function handleConfirmPickup(reservationId: string) {
     try {
       markCollected(reservationId);
 
-      setProducts(getProducts());
-      setOffers(getOffers());
-      setReservations(getReservations());
+      refresh();
       setError("");
     } catch (error) {
       setError(
@@ -107,9 +53,7 @@ export default function MerchantPage() {
     try {
       resetDemo();
 
-      setProducts(getProducts());
-      setOffers(getOffers());
-      setReservations(getReservations());
+      refresh();
       setError("");
     } catch (error) {
       setError(
@@ -144,12 +88,13 @@ export default function MerchantPage() {
         Reset demo
       </button>
 
-      {error && (
+      {(error || loadError) && (
         <p role="alert" className="text-destructive">
-          {error}
+          {error || loadError}
         </p>
       )}
 
+      {loading && <p>Loading inventory...</p>}
       {/* Inventory */}
       <section className="space-y-3">
         <h2 className="text-xl font-semibold">Inventory</h2>
@@ -200,16 +145,11 @@ export default function MerchantPage() {
                 </p>
               )}
 
-              <button
-                type="button"
-                onClick={() => handlePublishOffer(product)}
-                className="mt-3 rounded-md border px-4 py-2"
-              >
-                Publish demo offer
-              </button>
-
+              <Link href="/merchant/recommendations" className="mt-3 inline-block rounded-md border px-4 py-2">
+                Review rescue recommendation →
+              </Link>
               <p className="mt-2 text-sm text-muted-foreground">
-                Demo offer: 11 buns at 50% discount.
+                Publish from Recommendations so the offer follows the current stock and prediction.
               </p>
             </div>
           );
@@ -238,14 +178,7 @@ export default function MerchantPage() {
             <p>Available: {offer.quantityRemaining}</p>
             <p>Pickup before: {offer.pickupDeadline}</p>
 
-            <button
-              type="button"
-              onClick={() => handleTestReservation(offer.id)}
-              disabled={offer.quantityRemaining < 2}
-              className="mt-3 rounded-md border px-4 py-2 disabled:opacity-50"
-            >
-              Test: reserve 2 buns
-            </button>
+            <Link href="/rescue" className="mt-3 inline-block underline">View resident offer</Link>
           </div>
         ))}
       </section>

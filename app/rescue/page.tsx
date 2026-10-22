@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import Link from "next/link";
 import {
   ArrowDownRight,
@@ -20,10 +20,10 @@ import {
   Utensils,
 } from "lucide-react";
 import {
-  getOffers,
-  getReservations,
   reserveOffer,
 } from "@/lib/demo-store";
+import { useDemoState } from "@/hooks/use-demo-state";
+import { DemoNav } from "@/components/foodrescue/demo-nav";
 import type { Offer, Reservation } from "@/types/foodrescue";
 
 const DEMO_DISTANCE = "600 m";
@@ -54,45 +54,12 @@ function readableStatus(status: Reservation["status"]) {
 }
 
 export default function RescuePage() {
-  const [offers, setOffers] = useState<Offer[]>([]);
-  const [reservations, setReservations] = useState<Reservation[]>([]);
+  const { offers, reservations, loading, error: loadError, refresh: reload } = useDemoState();
   const [quantities, setQuantities] = useState<Record<string, number>>({});
   const [busyOfferId, setBusyOfferId] = useState<string | null>(null);
-  const [error, setError] = useState("");
+  const [actionError, setError] = useState("");
+  const error = actionError || loadError;
   const [notice, setNotice] = useState("");
-  const [loading, setLoading] = useState(true);
-
-  const reload = useCallback(() => {
-    try {
-      setOffers(getOffers());
-      setReservations(getReservations());
-      setError("");
-    } catch (cause) {
-      setError(
-        cause instanceof Error
-          ? cause.message
-          : "We couldn’t load the rescue offers. Please try again."
-      );
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    reload();
-  }, [reload]);
-
-  useEffect(() => {
-    // A merchant may confirm collection in another tab. Keep the shared
-    // localStorage-backed demo view fresh without adding another data store.
-    function onStorage(event: StorageEvent) {
-      if (!event.key || event.key === "foodrescue-demo-v1") reload();
-    }
-
-    window.addEventListener("storage", onStorage);
-    return () => window.removeEventListener("storage", onStorage);
-  }, [reload]);
-
   const reservationDetails = useMemo(
     () =>
       reservations.map((reservation) => ({
@@ -129,13 +96,12 @@ export default function RescuePage() {
         throw new Error("There aren’t enough items left for that quantity.");
       }
 
-      const reservation = reserveOffer(offer.id, quantity);
+      reserveOffer(offer.id, quantity);
       setNotice(
         `Reservation confirmed — ${quantity} × ${offer.productName}. Your reservation is saved on this device.`
       );
       setQuantities((current) => ({ ...current, [offer.id]: 1 }));
-      setReservations((current) => [...current, reservation]);
-      setOffers(getOffers());
+      reload();
     } catch (cause) {
       // Refresh availability first so reload cannot clear the reservation error.
       reload();
@@ -183,6 +149,7 @@ export default function RescuePage() {
             )}
           </a>
         </nav>
+        <div className="mt-5"><DemoNav /></div>
 
         <section className="relative mt-7 overflow-hidden rounded-[2rem] bg-[#163d2c] px-6 py-8 text-white sm:px-10 sm:py-12">
           <div className="pointer-events-none absolute -right-12 -top-20 size-72 rounded-full border border-white/10 sm:right-10 sm:top-[-7rem] sm:size-96" />

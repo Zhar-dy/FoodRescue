@@ -39,7 +39,7 @@ export function predictSurplus(product: Product): PredictionResult {
   const cappedExpectedSales = Math.min(product.currentStock, expectedRemainingSales);
   const predictedUnsold = product.currentStock - cappedExpectedSales;
 
-  const explanation = `At ${DEMO_TIME_LABEL}, closing at 9:00 PM, the ${totalDays}-day synthetic history suggests about ${remainingSales730To800.toFixed(1)} regular sales before 8:00 PM and ${remainingSales800To900.toFixed(1)} after that. This is approximately ${expectedRemainingSales} items of demand. With ${product.currentStock} in stock, up to ${cappedExpectedSales} may sell and ${predictedUnsold} may remain. This baseline uses assumed sales patterns, not validated real-world accuracy.`;
+  const explanation = `At ${DEMO_TIME_LABEL}, closing at 9:00 PM, ${totalDays} simulated days (${syntheticData.hourlyObservations.toLocaleString("en-MY")} hourly observations) suggest about ${remainingSales730To800.toFixed(1)} regular sales before 8:00 PM and ${remainingSales800To900.toFixed(1)} after that. This is approximately ${expectedRemainingSales} items of demand. With ${product.currentStock} in stock, up to ${cappedExpectedSales} may sell and ${predictedUnsold} may remain. This single-product baseline uses assumed sales patterns; more synthetic rows do not establish real-world accuracy.`;
 
   return {
     productId: product.id,

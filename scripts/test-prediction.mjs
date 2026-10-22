@@ -17,15 +17,15 @@ function load(relativePath) {
     .replace(/import\s+(\w+)\s+from\s+["']([^"']+)["'];?/g, (_, name, specifier) => `const ${name} = require(${JSON.stringify(specifier)});`)
     .replace(/\bexport\s+(function|const)\s/g, "$1 ")
     + `\nmodule.exports = { ${exports.join(", ")} };`;
-  const module = { exports: {} };
-  cache.set(filename, module);
+  const compiledModule = { exports: {} };
+  cache.set(filename, compiledModule);
   const requireProject = (specifier) => {
     assert.ok(specifier.startsWith("@/"), `Unexpected dependency: ${specifier}`);
     const relative = specifier.slice(2);
     return load(path.extname(relative) ? relative : `${relative}.ts`);
   };
-  new Function("require", "module", "exports", outputText)(requireProject, module, module.exports);
-  return module.exports;
+  new Function("require", "module", "exports", outputText)(requireProject, compiledModule, compiledModule.exports);
+  return compiledModule.exports;
 }
 
 const { predictSurplus } = load("lib/prediction/index.ts");
@@ -52,8 +52,28 @@ for (const stock of [-1, 1.5, Number.NaN, Number.POSITIVE_INFINITY, Number.MAX_S
   assert.throws(() => predictSurplus({ ...demoProduct, currentStock: stock }), /whole number/);
 }
 
-assert.equal(data.dailyData.length, 30);
-for (const day of data.dailyData) {
+assert.equal(data.seed, 42);
+assert.equal(data.totalDays, 180);
+assert.equal(data.dailyData.length, data.totalDays);
+assert.equal(data.hourlyObservations, 2160);
+assert.equal(data.hourlyObservations, data.totalDays * (data.closingHour - data.openingHour));
+assert.equal(data.dateRange.start, data.dailyData[0].date);
+assert.equal(data.dateRange.end, data.dailyData.at(-1).date);
+assert.equal(new Set(data.dailyData.map((day) => day.date)).size, data.totalDays);
+assert.equal(new Set(data.dailyData.map((day) => day.weekday)).size, 7);
+assert.ok(new Set(data.dailyData.map((day) => day.openingStock)).size > 1);
+assert.ok(new Set(data.dailyData.map((day) => day.demandMultiplier)).size > 1);
+const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+let observations = 0;
+for (const [index, day] of data.dailyData.entries()) {
+  assert.equal(day.day, index + 1);
+  const expectedDate = new Date(`${data.dateRange.start}T00:00:00.000Z`);
+  expectedDate.setUTCDate(expectedDate.getUTCDate() + index);
+  assert.equal(day.date, expectedDate.toISOString().slice(0, 10));
+  assert.equal(day.weekday, weekdays[expectedDate.getUTCDay()]);
+  assert.ok(Number.isSafeInteger(day.openingStock) && day.openingStock >= 105 && day.openingStock <= 135);
+  assert.ok(day.demandMultiplier >= 0.85 && day.demandMultiplier <= 1.15);
+  assert.equal(Object.keys(day.hourlySales).length, data.closingHour - data.openingHour);
   let stock = day.openingStock;
   for (let hour = data.openingHour; hour < data.closingHour; hour++) {
     const sold = day.hourlySales[String(hour)];
@@ -62,7 +82,9 @@ for (const day of data.dailyData) {
     assert.equal(snapshot.startingStock, stock);
     stock -= sold;
     assert.equal(snapshot.remainingStock, stock);
+    observations++;
   }
   assert.equal(day.closingStock, stock);
 }
-console.log("PASS: shared Product → Prediction → Recommendation, stock bounds, invalid input and 30-day inventory consistency.");
+assert.equal(observations, data.hourlyObservations);
+console.log("PASS: shared Product → Prediction → Recommendation, stock bounds, invalid input and 180 dated days / 2160 hourly observations with stock conservation.");

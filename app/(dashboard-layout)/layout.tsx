@@ -1,37 +1,26 @@
-"use client";
-import React from "react";
-import Header from "./layout/vertical/header";
-import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
-import Footer from "./layout/footer/page";
-import { AppSidebar } from "./layout/vertical/sidebar/app-sidebar";
-import { cn } from "@/lib/utils";
-import RouteErrorBoundary from "@/app/components/shared/route-error-boundary";
+import Link from "next/link";
+import { Leaf } from "lucide-react";
+import { DemoNav } from "@/components/foodrescue/demo-nav";
 
-export default function Layout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <SidebarProvider
-      defaultOpen={true}
-      style={{ "--sidebar-width-icon": "52px" } as React.CSSProperties}
-    >
-      <AppSidebar />
-      <SidebarInset className="outline outline-border m-2 rounded-none! overflow-hidden">
-        <Header />
-        <div className="flex flex-1 flex-col gap-4 p-4">
-          <div className={cn("w-full mx-auto", "container")}>
-            <div className=" min-h-[calc(100vh-140px)]">
-              <RouteErrorBoundary title="Page error">{children}</RouteErrorBoundary>
-            </div>
-            <div className="pt-6">
-              <Footer />
-            </div>
+    <div className="min-h-screen bg-[#f7f8f2] text-[#1e2b24]">
+      <header className="border-b border-[#dce3d8] bg-white">
+        <div className="mx-auto max-w-6xl space-y-4 px-4 py-5 sm:px-6">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <Link href="/" className="inline-flex items-center gap-2 text-xl font-bold">
+              <Leaf className="size-7 text-emerald-800" aria-hidden="true" /> FoodRescue AI
+            </Link>
+            <span className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-900">Township prototype · ABC Bakery</span>
           </div>
+          <DemoNav />
         </div>
-      </SidebarInset>
-    </SidebarProvider>
+      </header>
+      <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6">{children}</main>
+      <footer className="mx-auto max-w-6xl border-t border-[#dce3d8] px-4 py-5 text-xs leading-5 text-[#647269] sm:px-6">
+        Demonstration only · Fixed time 7:30 PM, closing 9 PM · Data stays in this browser.
+      </footer>
+    </div>
   );
 }
 

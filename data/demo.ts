@@ -16,7 +16,7 @@ export const demoProduct: Product = {
 export const demoPrediction: Prediction = {
   productId: "product-001",
   predictedUnsold: 11,
-  confidence: 0.84,
+  confidence: 0,
 };
 
 export const demoRecommendation: Recommendation = {
@@ -25,10 +25,10 @@ export const demoRecommendation: Recommendation = {
   discountPercent: 50,
   publishAt: "20:00",
   expectedSellThrough: 0.82,
-  expectedRevenueRecovered: 54,
+  expectedRevenueRecovered: 54.12,
   reasoning: [
     "High predicted surplus before closing",
     "Only 90 minutes remain before closing",
-    "Similar discounted offers achieved strong sell-through",
+    "Sell-through is an assumed demo estimate, not observed performance",
   ],
 };
