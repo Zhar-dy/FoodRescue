@@ -7,6 +7,7 @@ import {
   getOffers,
   createOffer,
   resetDemo,
+  reserveOffer,
 } from "@/lib/demo-store";
 import { demoRecommendation } from "@/data/demo";
 import type { Product, Offer } from "@/types/foodrescue";
@@ -74,6 +75,19 @@ export default function MerchantPage() {
     } catch (error) {
       setError(
         error instanceof Error ? error.message : "Cannot reset demo."
+      );
+    }
+  }
+
+  function handleTestReservation(offerId: string) {
+    try {
+      reserveOffer(offerId, 2);
+
+      setOffers(getOffers());
+      setError("");
+    } catch (error) {
+      setError(
+        error instanceof Error ? error.message : "Cannot reserve offer."
       );
     }
   }
@@ -162,6 +176,13 @@ export default function MerchantPage() {
 
             <p>Available: {offer.quantityRemaining}</p>
             <p>Pickup before: {offer.pickupDeadline}</p>
+            <button
+              type="button"
+              onClick={() => handleTestReservation(offer.id)}
+              disabled={offer.quantityRemaining < 2}
+              className="mt-3 rounded-md border px-4 py-2 disabled:opacity-50">
+              Test: reserve 2 buns
+            </button>
           </div>
         ))}
       </section>

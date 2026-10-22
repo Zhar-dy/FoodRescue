@@ -157,3 +157,44 @@ export function createOffer(
 export function resetDemo(): void {
   writeState(createInitialState());
 }
+
+export function getReservations(): Reservation[] {
+  return readState().reservations;
+}
+
+export function reserveOffer(
+  offerId: string,
+  quantity: number
+): Reservation {
+  if (!Number.isSafeInteger(quantity) || quantity <= 0) {
+    throw new Error("Reservation quantity must be a positive whole number.");
+  }
+
+  const state = readState();
+
+  const offer = state.offers.find(
+    (offer) => offer.id === offerId
+  );
+
+  if (!offer) {
+    throw new Error("Offer not found.");
+  }
+
+  if (quantity > offer.quantityRemaining) {
+    throw new Error("Not enough items available.");
+  }
+
+  const reservation: Reservation = {
+    id: crypto.randomUUID(),
+    offerId: offer.id,
+    quantity,
+    status: "reserved",
+  };
+
+  offer.quantityRemaining -= quantity;
+  state.reservations.push(reservation);
+
+  writeState(state);
+
+  return reservation;
+}
