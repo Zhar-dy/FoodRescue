@@ -1,57 +1,38 @@
-import AdvertisementCost from "@/app/components/dashboards/modern/advertisement-cost";
-import OverviewTab from "@/app/components/dashboards/modern/overview-tab";
-import TotalAssets from "@/app/components/dashboards/modern/total-assets";
-import TotalOrders from "@/app/components/dashboards/modern/total-orders";
-import TotalProfit from "@/app/components/dashboards/modern/total-profit";
-import TotalSales from "@/app/components/dashboards/modern/total-sales";
-import UpdateBanner from "@/app/components/dashboards/modern/update-banner";
-import ProjectsOrders from "@/app/components/dashboards/modern/projects-orders";
-import StyleAwareWrapper from "@/app/components/shared/StyleAwareWrapper";
-import StyleDivider from "@/app/components/shared/StyleDivider";
-import { Metadata } from "next";
+import Link from "next/link";
+import { ArrowRight, Leaf, ShoppingBag, Store } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Modern Admin Dashboard",
-  description: "Modern template page",
-};
-
-const page = () => {
+export default function HomePage() {
   return (
-    <>
-      <div className="pb-4">
-        <OverviewTab />
+    <div className="space-y-8">
+      <section className="rounded-[2rem] bg-[#163d2c] px-6 py-10 text-white sm:p-12">
+        <p className="text-sm font-semibold text-[#b9edaa]">GOOD FOOD. A SECOND CHANCE.</p>
+        <h1 className="mt-4 max-w-3xl text-4xl font-bold tracking-tight sm:text-5xl">Predict surplus. Rescue it before closing.</h1>
+        <p className="mt-5 max-w-2xl leading-7 text-emerald-50/90">FoodRescue AI helps township bakeries estimate unsold food, publish a rescue offer, and connect with nearby residents who can collect it.</p>
+        <p className="mt-5 text-sm text-emerald-100">A working demonstration with synthetic history and baseline forecasting.</p>
+      </section>
+      <div className="grid gap-4 md:grid-cols-2">
+        {[
+          { title: "Merchant workspace", href: "/merchant", icon: Store, text: "Update stock, check the forecast, publish an offer and confirm collection.", action: "Open merchant" },
+          { title: "Resident offers", href: "/rescue", icon: ShoppingBag, text: "Find the bakery’s published offer, reserve food and view pickup status.", action: "Open resident" },
+        ].map(({ title, href, icon: Icon, text, action }) => (
+          <section key={href} className="space-y-4 rounded-2xl border border-[#dce3d8] bg-white p-6">
+            <Icon className="size-7 text-emerald-800" aria-hidden="true" />
+            <h2 className="text-xl font-semibold">{title}</h2>
+            <p className="leading-6 text-[#647269]">{text}</p>
+            <Link href={href} className="inline-flex items-center gap-2 font-semibold text-emerald-800 underline underline-offset-4">{action} <ArrowRight className="size-4" aria-hidden="true" /></Link>
+          </section>
+        ))}
       </div>
-      <StyleAwareWrapper
-        lyraClassName="grid grid-cols-12 p-px gap-px bg-border"
-        defaultClassName="grid grid-cols-12 gap-4"
-      >
-        <div className="col-span-12">
-          <UpdateBanner />
+      <section className="space-y-4 rounded-2xl border border-[#dce3d8] bg-white p-6">
+        <h2 className="flex items-center gap-2 text-xl font-semibold"><Leaf className="size-5 text-emerald-800" aria-hidden="true" /> A small township loop</h2>
+        <p className="leading-7 text-[#647269]">Inventory → prediction → rescue offer → reservation → collection → measured impact.</p>
+        <div className="grid gap-4 text-sm sm:grid-cols-3">
+          <p><strong>Residents:</strong> access lower-priced food close to home.</p>
+          <p><strong>Merchants:</strong> recover revenue from food at risk of going unsold.</p>
+          <p><strong>Planet:</strong> track food collected instead of counting reservations as waste saved.</p>
         </div>
-        <StyleDivider wrapperClassName="col-span-12" />
-        <div className="lg:col-span-7 col-span-12">
-          <TotalSales />
-        </div>
-        <div className="lg:col-span-5 col-span-12">
-          <TotalAssets />
-        </div>
-        <StyleDivider wrapperClassName="col-span-12" />
-        <div className="lg:col-span-4 col-span-12">
-          <TotalOrders />
-        </div>
-        <div className="lg:col-span-4 col-span-12">
-          <TotalProfit />
-        </div>
-        <div className="lg:col-span-4 col-span-12">
-          <AdvertisementCost />
-        </div>
-        <StyleDivider wrapperClassName="col-span-12" />
-        <div className="col-span-12">
-          <ProjectsOrders />
-        </div>
-      </StyleAwareWrapper>
-    </>
+        <p className="border-t pt-4 text-sm leading-6 text-[#647269]">Use merchant and resident views in the same browser. Distance is illustrative; there are no payments, real notifications or separate user accounts in this prototype.</p>
+      </section>
+    </div>
   );
-};
-
-export default page;
+}

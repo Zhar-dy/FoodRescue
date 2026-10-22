@@ -1,7 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "standalone",
   // Instant Navigations (Next.js 16.3): App Shells, Partial Prefetching, Instant Insights
   cacheComponents: true,
   partialPrefetching: true,

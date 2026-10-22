@@ -1,72 +1,39 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import {
   createOffer,
-  getOffers,
   getProducts,
 } from "@/lib/demo-store";
+import { useDemoState } from "@/hooks/use-demo-state";
 import { predictSurplus } from "@/lib/prediction";
 import { generateRecommendation } from "@/lib/ai/recommendation";
-import type {
-  Product,
-  Recommendation,
-} from "@/types/foodrescue";
 
 export default function RecommendationsPage() {
-  const [product, setProduct] = useState<Product | null>(null);
-  const [recommendation, setRecommendation] =
-    useState<Recommendation | null>(null);
+  const { products, offers, error: loadError, refresh } = useDemoState();
   const [message, setMessage] = useState("");
-  const [error, setError] = useState("");
-  const [published, setPublished] = useState(false);
-
-  useEffect(() => {
-    try {
-      const savedProduct = getProducts()[0];
-
-      if (!savedProduct) {
-        throw new Error("No product found. Reset the demo from Merchant.");
-      }
-
-      const prediction = predictSurplus(savedProduct);
-      const result = generateRecommendation(savedProduct, prediction);
-
-      setProduct(savedProduct);
-      setRecommendation(result);
-      setPublished(
-        getOffers().some((offer) => offer.productId === savedProduct.id)
-      );
-    } catch (err) {
-      setError(
-        err instanceof Error ? err.message : "Unable to load recommendations."
-      );
-    }
-  }, []);
+  const [actionError, setActionError] = useState("");
+  const error = actionError || loadError;
+  const product = products[0] ?? null;
+  const recommendation = product ? generateRecommendation(product, predictSurplus(product)) : null;
+  const published = !!product && offers.some((offer) => offer.productId === product.id);
 
   function handlePublish() {
     setMessage("");
-    setError("");
-
-    if (!product || !recommendation) {
-      setError("Recommendation is not ready.");
-      return;
-    }
-
-    if (recommendation.quantity <= 0) {
-      setError("Cannot publish an offer with zero quantity.");
-      return;
-    }
-
+    setActionError("");
     try {
-      createOffer(product, recommendation);
-      setPublished(true);
-      setMessage("Offer published successfully and is available to residents.");
-    } catch (err) {
-      setError(
-        err instanceof Error ? err.message : "Unable to publish the offer."
-      );
+      // Recompute from storage at the moment of publishing, including other-tab edits.
+      const currentProduct = getProducts().find((item) => item.id === product?.id);
+      if (!currentProduct) throw new Error("No product found. Reset the demo from Merchant.");
+      const currentRecommendation = generateRecommendation(currentProduct, predictSurplus(currentProduct));
+      if (currentRecommendation.quantity <= 0) throw new Error("Cannot publish an offer with zero quantity.");
+      const offer = createOffer(currentProduct, currentRecommendation);
+      refresh();
+      setMessage("Offer published successfully and is available to residents. Available: " + offer.quantityRemaining + ".");
+    } catch (cause) {
+      refresh();
+      setActionError(cause instanceof Error ? cause.message : "Unable to publish the offer.");
     }
   }
 

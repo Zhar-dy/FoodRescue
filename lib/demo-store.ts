@@ -28,6 +28,7 @@ function writeState(state: DemoState): void {
   }
 
   window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  window.dispatchEvent(new Event("foodrescue:updated"));
 }
 
 function readState(): DemoState {
@@ -38,7 +39,15 @@ function readState(): DemoState {
   const saved = window.localStorage.getItem(STORAGE_KEY);
 
   if (saved !== null) {
-    return JSON.parse(saved) as DemoState;
+    try {
+      const state = JSON.parse(saved) as DemoState;
+      if (!state || !Array.isArray(state.products) || !Array.isArray(state.offers) || !Array.isArray(state.reservations)) {
+        throw new Error("Invalid demo data.");
+      }
+      return state;
+    } catch {
+      throw new Error("Saved demo data cannot be read. Use Reset demo on the merchant page.");
+    }
   }
 
   const initialState = createInitialState();

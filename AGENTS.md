@@ -1,5 +1,16 @@
 # AGENTS.md - AI Coding Agent Reference
 
+## FoodRescue prototype overrides
+
+The live FoodRescue flow uses `lib/demo-store.ts` and browser localStorage.
+Do not introduce a database, authentication, API service or Python runtime for
+this one-browser prototype. Keep inventory, forecast, recommendation, offer,
+reservation, pickup and collected-only impact connected. Read README.md and
+docs/submission-notes.md before changing scope or describing AI capabilities.
+`pnpm lint` checks the FoodRescue code; `pnpm lint:all` also checks retained
+template examples with existing lint errors. The remaining notes describe the
+original dashboard template, including backend features unused by FoodRescue.
+
 This file provides essential information for AI coding agents working on this project. It contains project-specific details, conventions, and guidelines that complement the README and CLAUDE.md.
 
 ---
@@ -9,7 +20,7 @@ This file provides essential information for AI coding agents working on this pr
 **Shadcn Dashboard** is a Next.js admin dashboard built with:
 
 - **Framework**: Next.js 16.3 (App Router), React 19
-- **Language**: TypeScript 7, type-checked via CLI as part of `next build`
+- **Language**: TypeScript 5.9, type-checked via CLI as part of `next build`
 - **Instant Navigations**: `cacheComponents` + `partialPrefetching` in `next.config.ts`
 - **Routing**: File-based App Router — `app/auth/` (standalone auth pages) and `app/(dashboard-layout)/` (sidebar + header shell)
 - **Styling**: Tailwind CSS v4
