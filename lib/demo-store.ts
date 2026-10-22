@@ -3,6 +3,7 @@ import type {
   Product,
   Offer,
   Reservation,
+  Recommendation,
 } from "@/types/foodrescue";
 
 const STORAGE_KEY = "foodrescue-demo-v1";
@@ -85,4 +86,74 @@ export function updateStock(
 
   product.currentStock = stock;
   writeState(state);
+}
+
+export function getOffers(): Offer[] {
+  return readState().offers;
+}
+
+export function createOffer(
+  product: Product,
+  recommendation: Recommendation
+): Offer {
+  const state = readState();
+
+  const savedProduct = state.products.find(
+    (item) => item.id === product.id
+  );
+
+  if (!savedProduct) {
+    throw new Error("Product not found.");
+  }
+
+  if (recommendation.productId !== savedProduct.id) {
+    throw new Error("Recommendation belongs to another product.");
+  }
+
+  const existingOffer = state.offers.find(
+    (offer) => offer.productId === savedProduct.id
+  );
+
+  if (existingOffer) {
+    return existingOffer;
+  }
+
+  const quantity = recommendation.quantity;
+  const discount = recommendation.discountPercent;
+
+  if (
+    !Number.isSafeInteger(quantity) ||
+    quantity <= 0 ||
+    quantity > savedProduct.currentStock
+  ) {
+    throw new Error("Offer quantity must be within available stock.");
+  }
+
+  if (!Number.isFinite(discount) || discount < 0 || discount > 100) {
+    throw new Error("Discount must be between 0 and 100.");
+  }
+
+  const discountedPrice = Number(
+    (savedProduct.originalPrice * (1 - discount / 100)).toFixed(2)
+  );
+
+  const offer: Offer = {
+    id: crypto.randomUUID(),
+    merchantId: savedProduct.merchantId,
+    productId: savedProduct.id,
+    productName: savedProduct.name,
+    originalPrice: savedProduct.originalPrice,
+    discountedPrice,
+    quantityRemaining: quantity,
+    pickupDeadline: "21:00",
+  };
+
+  state.offers.push(offer);
+  writeState(state);
+
+  return offer;
+}
+
+export function resetDemo(): void {
+  writeState(createInitialState());
 }
